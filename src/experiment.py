@@ -4,6 +4,8 @@ with a capacity determined bottleneck
 """
 import os
 import sys
+import traceback
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -30,26 +32,40 @@ iperf_client(contesting_client, bottleneck_link_dest['ip'])
 # capture traffic on bottleneck router
 capture_traffic(bottleneck_router, 'eth1', '180', 'traffic-capture')
 
+# import time
+# time.sleep(10)
+
 # run pathneck from client to server
 for i in range(n_iter):
-	result = pathneck(client, server['ip'])
-	print(result)
-	bottleneck, bottleneck_bw = parse_pathneck_result(result)
-	if bottleneck is not None:
-		bottleneck_bandwidth.append(bottleneck_bw)
-		data[bottleneck].append(bottleneck_bw)
+    result = pathneck(client, server['ip'])
+    print(result)
+    bottleneck, bottleneck_bw = parse_pathneck_result(result)
+    if bottleneck is not None:
+        bottleneck_bandwidth.append(bottleneck_bw)
+        data[bottleneck].append(bottleneck_bw)
 
 # plot bandwidth test results
-total_data = [data[key] for key in data]
-sns.stripplot(data=total_data, jitter=True, color='black')
-sns.boxplot(total_data)
-plt.xlabel('Hop ID')
-plt.ylabel('Measured bandwidth ')
-plt.title(f'Bandwidth [Mbits/sec] distributions of detected bottlenecks')
-plt.savefig('pathneck-boxplot')
-plt.show()
+try:
+    total_data = [data[key] for key in data]
+    sns.stripplot(data=total_data, jitter=True, color='black')
+    sns.boxplot(total_data)
+    plt.xlabel('Hop ID')
+    plt.ylabel('Measured bandwidth ')
+    plt.title(f'Bandwidth [Mbits/sec] distributions of detected bottlenecks')
+    plt.savefig('pathneck-boxplot')
+    plt.show()
+except:
+    print("FAILED to plot bandwidth test results:")
+    print(data)
+    traceback.print_exc()
 
 os.system(f"docker exec {contesting_client} pkill iperf")
 os.system(f"docker exec {client} pkill iperf")
 os.system(f"docker exec {server['name']} pkill iperf")
 os.system(f"docker exec {bottleneck_link_dest['name']} pkill iperf")
+
+# wait not found on containers
+# os.system(f"docker exec {contesting_client} wait $(pgrep iperf)")
+# os.system(f"docker exec {client} wait $(pgrep iperf)")
+# os.system(f"docker exec {server['name']} wait $(pgrep iperf)")
+# os.system(f"docker exec {bottleneck_link_dest['name']} wait $(pgrep iperf)")
