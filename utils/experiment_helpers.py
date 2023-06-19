@@ -2,7 +2,7 @@
 Helper functions useful when setting up an experiment
 """
 import subprocess
-
+from ipaddress import ip_network
 
 def capture_traffic(node_name, interface, duration, filename):
 	"""
@@ -75,3 +75,36 @@ def parse_pathneck_result(pathneck_result):
 				bottleneck_bw = float(line[6])
 				return bottleneck, bottleneck_bw
 	return None, None
+
+def get_subnet_cidr_from_ifconfig(server):
+	ifconfig_result = subprocess.run(['docker', 'exec', f'{server["name"]}', 'ifconfig'], stdout=subprocess.PIPE) \
+		.stdout.decode('utf-8')
+	subnet_mask = None
+	for line in ifconfig_result.splitlines():
+		# TODO: check returned IPv4?
+		if 'netmask' in line:
+			subnet_mask = line.split()[3]
+			break
+
+	if subnet_mask is None:
+		print(f"Failed to find a subnet from {server['name']}'s ifconfig information")
+		exit(1)
+
+	subnet = ip_network(f"{server['ip']}/{subnet_mask}", strict=False)
+	return f'{subnet.network_address}/{subnet.prefixlen}'
+
+def get_reachable_ips(server, subnet_cidr):
+	print(f'getting reachable ips for subnet {subnet_cidr}..')
+
+	# ping sweep
+	ping_result = subprocess.run(['docker', 'exec', f'{server["name"]}', 'nmap', '-sn', f'{subnet_cidr}'],
+								 stdout=subprocess.PIPE).stdout.decode('utf-8')
+	reachable_ips = []
+	for line in ping_result.splitlines():
+		if 'Nmap scan report' in line:
+			ip = line.split()[-1].strip("()")
+			if ip != server['ip']:
+				reachable_ips.append(ip)
+	print(reachable_ips)
+	return reachable_ips
+

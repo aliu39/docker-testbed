@@ -13,7 +13,9 @@ RUN apt-get update && \
     gcc \
     build-essential \
     tcpdump \
-    python3
+    python3 \
+    net-tools \
+    nmap
 
 # Install Pathneck
 RUN wget http://www.cs.cmu.edu/~hnn/pathneck/pathneck-1.3.tgz && \

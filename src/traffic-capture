@@ -1,0 +1,34 @@
+04:25:46.301421 ARP, Ethernet (len 6), IPv4 (len 4), Request who-has c2.c2-r5 tell 64a2f5a2a95c, length 28
+04:25:46.302686 ARP, Ethernet (len 6), IPv4 (len 4), Reply c2.c2-r5 is-at 02:42:0a:00:05:02 (oui Unknown), length 28
+04:27:34.726715 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::3837:96ff:fe53:d36d > ip6-allrouters: [icmp6 sum ok] ICMP6, router solicitation, length 16
+	  source link-address option (1), length 8 (1): 3a:37:96:53:d3:6d
+04:27:35.758349 ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 10.0.5.1 tell 64a2f5a2a95c, length 28
+04:27:35.758437 ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 10.0.5.1 tell 64a2f5a2a95c, length 28
+04:27:35.758456 ARP, Ethernet (len 6), IPv4 (len 4), Reply 10.0.5.1 is-at 02:42:00:77:50:35 (oui Unknown), length 28
+04:27:35.759819 IP (tos 0x0, ttl 64, id 30269, offset 0, flags [DF], proto UDP (17), length 118)
+    64a2f5a2a95c.45855 > 192.168.65.5.53: 39178+ PTR? d.6.3.d.3.5.e.f.f.f.6.9.7.3.8.3.0.0.0.0.0.0.0.0.0.0.0.0.0.8.e.f.ip6.arpa. (90)
+04:27:40.764288 IP (tos 0x0, ttl 64, id 34964, offset 0, flags [DF], proto UDP (17), length 118)
+    64a2f5a2a95c.45917 > 192.168.65.5.53: 39178+ PTR? d.6.3.d.3.5.e.f.f.f.6.9.7.3.8.3.0.0.0.0.0.0.0.0.0.0.0.0.0.8.e.f.ip6.arpa. (90)
+04:27:45.737679 IP (tos 0x0, ttl 64, id 35245, offset 0, flags [DF], proto UDP (17), length 67)
+    64a2f5a2a95c.50911 > 192.168.65.5.53: 58737+ PTR? 1.5.0.10.in-addr.arpa. (39)
+04:27:45.835726 IP (tos 0x0, ttl 63, id 37352, offset 0, flags [DF], proto UDP (17), length 67)
+    192.168.65.5.53 > 64a2f5a2a95c.50911: 58737 NXDomain 0/0/0 (39)
+04:27:45.839925 IP (tos 0x0, ttl 64, id 35280, offset 0, flags [DF], proto UDP (17), length 71)
+    64a2f5a2a95c.42146 > 192.168.65.5.53: 60662+ PTR? 5.65.168.192.in-addr.arpa. (43)
+04:27:45.923073 IP (tos 0x0, ttl 63, id 37408, offset 0, flags [DF], proto UDP (17), length 71)
+    192.168.65.5.53 > 64a2f5a2a95c.42146: 60662 NXDomain 0/0/0 (43)
+04:27:51.077624 ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 64a2f5a2a95c tell 10.0.5.1, length 28
+04:27:51.079060 ARP, Ethernet (len 6), IPv4 (len 4), Reply 64a2f5a2a95c is-at 02:42:0a:00:05:04 (oui Unknown), length 28
+04:27:55.757055 IP (tos 0x0, ttl 63, id 41033, offset 0, flags [DF], proto UDP (17), length 118)
+    192.168.65.5.53 > 64a2f5a2a95c.45855: 39178 NXDomain 0/0/0 (90)
+04:27:55.758357 IP (tos 0xc0, ttl 64, id 49483, offset 0, flags [none], proto ICMP (1), length 146)
+    64a2f5a2a95c > 192.168.65.5: ICMP 64a2f5a2a95c udp port 45855 unreachable, length 126
+	IP (tos 0x0, ttl 63, id 41033, offset 0, flags [DF], proto UDP (17), length 118)
+    192.168.65.5.53 > 64a2f5a2a95c.45855: 39178 NXDomain 0/0/0 (90)
+04:28:00.762376 IP (tos 0x0, ttl 63, id 43001, offset 0, flags [DF], proto UDP (17), length 118)
+    192.168.65.5.53 > 64a2f5a2a95c.45917: 39178 NXDomain 0/0/0 (90)
+04:28:00.763472 IP (tos 0xc0, ttl 64, id 54094, offset 0, flags [none], proto ICMP (1), length 146)
+    64a2f5a2a95c > 192.168.65.5: ICMP 64a2f5a2a95c udp port 45917 unreachable, length 126
+	IP (tos 0x0, ttl 63, id 43001, offset 0, flags [DF], proto UDP (17), length 118)
+    192.168.65.5.53 > 64a2f5a2a95c.45917: 39178 NXDomain 0/0/0 (90)
+
