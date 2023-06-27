@@ -27,8 +27,8 @@ with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
         line = line.split('#', 1)[0]
         if line and not line.isspace():
             [name, ip] = line.split(',', 1)
-            name = name.strip(' ( ')
-            ip = ip.strip('\n ) ')
+            name = name.strip(' ( "')
+            ip = ip.strip('\n ) "')
             if name and ip:
                 known_servers.append({'name': name, 'ip': ip})
             else:
@@ -36,8 +36,8 @@ with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
                 exit(1)
 print(known_servers)
 
-capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture.txt')
-capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture.txt')
+capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture')
+capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture')
 
 # map the network
 topology = {
