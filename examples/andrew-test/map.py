@@ -42,11 +42,11 @@ topology = {
 # TODO: RESOLVE IP ALIASING
 for idx1, src in enumerate(known_servers):
     for idx2 in range(idx1+1, len(known_servers)):
-        traceroute_result = traceroute(src['name'], known_servers[idx2]['ip'])
-        print(traceroute_result)
-        if traceroute_result is not None:
+        returncode, output = traceroute(src['name'], known_servers[idx2]['ip'])
+        print(returncode, output)
+        if returncode == 0:
             prev_hop = src['ip']
-            ips, rtts = parse_traceroute_result(traceroute_result)
+            ips, rtts = parse_traceroute_result(output)
             for ip, rtt in zip(ips, rtts):
                 # store links (assume bi-directional)
                 measurements = topology['links'][prev_hop].get(ip, [])

@@ -76,21 +76,17 @@ def parse_pathneck_result(pathneck_result):
 				return bottleneck, bottleneck_bw
 	return None, None
 
-def traceroute(client_name, server_ip, query_timeout_ms=500, n_queries=3, max_hops=30):
+def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=30):
 	"""
 	Run traceroute from client to server
 	:param client_name: name of client node
 	:param server_ip: ip address of server node
-	:return: String containing output of traceroute run
+	:return: returncode, String containing output of traceroute run
 	"""
-	# TODO: take average rtt and consider num trials
-	# use timeout?
-	# -q {num_trials} -m {max_hops}
-	result = subprocess.run(['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_ms/1000), 'traceroute', '-q',
+	# TODO: take average rtt over all queries, and consider using num trials
+	result = subprocess.run(['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_s), 'traceroute', '-q',
 							str(n_queries), '-m', str(max_hops), f'{server_ip}'], stdout=subprocess.PIPE)
-	print(result.returncode)
-	return result.stdout.decode('utf-8')
-	# return None
+	return result.returncode, result.stdout.decode('utf-8')
 
 def parse_traceroute_result(traceroute_result):
 	"""
