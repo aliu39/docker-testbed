@@ -76,6 +76,36 @@ def parse_pathneck_result(pathneck_result):
 				return bottleneck, bottleneck_bw
 	return None, None
 
+def traceroute(client_name, server_ip, query_timeout_ms=500, n_queries=3, max_hops=30):
+	"""
+	Run traceroute from client to server
+	:param client_name: name of client node
+	:param server_ip: ip address of server node
+	:return: String containing output of traceroute run
+	"""
+	# TODO: take average rtt and consider num trials
+	# use timeout?
+	# -q {num_trials} -m {max_hops}
+	result = subprocess.run(['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_ms/1000), 'traceroute', '-q',
+							str(n_queries), '-m', str(max_hops), f'{server_ip}'], stdout=subprocess.PIPE)
+	print(result.returncode)
+	return result.stdout.decode('utf-8')
+	# return None
+
+def parse_traceroute_result(traceroute_result):
+	"""
+	Returns detected bottleneck and estimated bandwidth
+	:param traceroute_result: output of successful traceroute run
+	of traceroute function
+	:return: tuple (ips, rtts)
+	"""
+	ips, rtts = [], []
+	for line in traceroute_result.splitlines()[1:]:
+		line = line.split()
+		ips.append(line[2].strip('()'))
+		rtts.append(float(line[3]))
+	return ips, rtts
+
 def get_subnet_cidr_from_ifconfig(server):
 	ifconfig_result = subprocess.run(['docker', 'exec', f'{server["name"]}', 'ifconfig'], stdout=subprocess.PIPE) \
 		.stdout.decode('utf-8')

@@ -20,6 +20,7 @@ Ensure that the ip address of both the nodes sharing the base link have the ip a
 - Each base link should have a separate subnet. The exact IP
 address of the node can be defined as any unique and valid IP address of the subnet being used by it's base link.
 - A node may be involved in two or more base links but while defining the node, include only one base link.
+- ##### The node's base link should be the first link the node appears in when defining links
 - Define nodes using the following format: 
 nodes = {node_name: (ip_addr, base_link_name), node2_name: (ip_addr2, base_link_name2), ...}
 - Define the links using the following format:

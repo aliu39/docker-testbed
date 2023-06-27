@@ -1,6 +1,6 @@
 """
 Maps the network from a central server node
-- constructs topology graph using nmap (ping sweep) and pathneck
+- constructs topology graph using nmap (ping sweep) and traceroute
 - stores min rtt to all nodes and bottleneck BW to client ("data") nodes
 - TODO: periodic rebuilds?
 """
@@ -11,43 +11,45 @@ import subprocess
 from collections import defaultdict
 
 sys.path.append('../..')
-from utils.experiment_helpers import pathneck, parse_pathneck_result, get_reachable_ips, get_subnet_cidr_from_ifconfig
+from utils.experiment_helpers import traceroute, parse_traceroute_result, capture_traffic
 
-server = {'name': 's1', 'ip': '10.0.4.4'}
+known_servers = []
+with open('examples/andrew-test/ip_list.txt', 'r') as ip_list_file:
+    for line in ip_list_file.read().splitlines():
+        line = line.split('#', 1)[0]
+        if line and not line.isspace():
+            [name, ip] = line.split(',', 1)
+            name = name.strip(' ( ')
+            ip = ip.strip('\n ) ')
+            if name and ip:
+                known_servers.append({'name': name, 'ip': ip})
+            else:
+                print(f"empty server name and/or ip in line: {line}")
+                exit(1)
 
-subnet_cidr = get_subnet_cidr_from_ifconfig(server)  # 10.0.4.0/24, ['10.0.4.1', '10.0.4.2']
-# subnet_cidr = '10.0.0.0/16'  # 65k pings! Don't use
-
-# do a ping sweep over the subnet
-reachable_ips = get_reachable_ips(server, subnet_cidr)
-reachable_ips = ['10.0.1.2', '10.0.5.2']
+# capture_traffic(server['name'], 'any', '10', 'examples/andrew-test/traffic-capture.txt')
 
 # map the network
 topology = {
-    'clients': defaultdict(dict),  # ip -> info dict
-    'links': defaultdict(list)     # adjacency list
+    'links': defaultdict(dict)     # adjacency list with each link mapping to a list of rtts
 }
-for ip in reachable_ips:
-    pathneck_result = pathneck(server['name'], ip)
-    print(pathneck_result)
+# TODO: RESOLVE IP ALIASING
+for idx1, src in enumerate(known_servers):
+    for idx2 in range(idx1+1, len(known_servers)):
+        traceroute_result = traceroute(src['name'], known_servers[idx2]['ip'])
+        print(traceroute_result)
+        if traceroute_result is not None:
+            prev_hop = src['ip']
+            ips, rtts = parse_traceroute_result(traceroute_result)
+            for ip, rtt in zip(ips, rtts):
+                # store links (assume bi-directional)
+                measurements = topology['links'][prev_hop].get(ip, [])
+                topology['links'][prev_hop][ip] = measurements + [rtt]
 
-    bottleneck_ip, bottleneck_bw = None, None
-    prev_hop = server['ip']
-    for line in pathneck_result.splitlines():
-        line = line.split()
-        if len(line) == 8:
-            # bottleneck info
-            if line[5] == '1':
-                bottleneck_ip = line[2]
-                bottleneck_bw = float(line[6])
+                measurements = topology['links'][ip].get(prev_hop, [])
+                topology['links'][ip][prev_hop] = measurements + [rtt]
 
-            # store links (assume bi-directional)
-            curr_hop = line[2]
-            topology['links'][prev_hop].append(curr_hop)
-            topology['links'][curr_hop].append(prev_hop)
-            prev_hop = curr_hop
-
-    topology['clients'][ip]['bottleneck_ip'] = bottleneck_ip
-    topology['clients'][ip]['bottleneck_bw'] = bottleneck_bw
+                prev_hop = ip
 
 print(topology)
+print(sum(map(lambda e: len(e[1]), topology['links'].items())), "LINKS MAPPED")
