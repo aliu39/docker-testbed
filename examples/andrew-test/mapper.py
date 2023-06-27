@@ -43,7 +43,7 @@ capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/m
 topology = {
     'links': defaultdict(dict)     # adjacency list with each link mapping to a list of rtts
 }
-# TODO: RESOLVE IP ALIASING
+
 for idx1, src in enumerate(known_servers):
     for idx2 in range(idx1+1, len(known_servers)):
         returncode, output = traceroute(src['name'], known_servers[idx2]['ip'])
@@ -65,3 +65,30 @@ print(topology)
 print(sum(map(lambda e: len(e[1]), topology['links'].items())), "LINKS MAPPED")
 
 time.sleep(TRAFFIC_CAPTURE_DURATION_S)
+
+# TODO: RESOLVE IP ALIASING
+'''
+Mercator is easiest to implement and doesn't require candidate pairs
+Rocket Fuel may be more accurate
+
+Mercator:
+Use IP packet's source address, in traceroute responses
+('normal' UDP-based traceroutes are used, rather than some specialized packet)
+
+Rocket Fuel:
+1. Identify potential alias pairs
+1a. from traceroute results from a single node
+    - similar TTLs
+    - similar RTTs?
+1b. from traceroute results from multiple nodes (distributed)
+    - aliases much more likely
+    - how to do this?
+1c. DNS? 
+1d. ?
+
+2. Test candidate pairs
+    - use IP packet identifier method 
+    - send probes sequentially, make use of fact IP ID is a global counter in most routers
+'''
+
+
