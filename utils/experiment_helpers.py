@@ -76,7 +76,7 @@ def parse_pathneck_result(pathneck_result):
 				return bottleneck, bottleneck_bw
 	return None, None
 
-def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=30):
+def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=30, use_icmp=False, udp_port=None):
 	"""
 	Run traceroute from client to server
 	:param client_name: name of client node
@@ -84,8 +84,16 @@ def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=
 	:return: returncode, String containing output of traceroute run
 	"""
 	# TODO: take average rtt over all queries, and consider using num trials
-	result = subprocess.run(['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_s), 'traceroute', '-q',
-							str(n_queries), '-m', str(max_hops), f'{server_ip}'], stdout=subprocess.PIPE)
+	# USE ICMP (default on linux is UDP)
+	cmd = ['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_s), 'traceroute']\
+		+ ['-q', str(n_queries), '-m', str(max_hops)]
+	if use_icmp:
+		cmd.append('-I')
+	if udp_port is not None:
+		cmd.append('-U')
+		cmd.append(str(udp_port))
+	cmd += [f'{server_ip}']
+	result = subprocess.run(cmd, stdout=subprocess.PIPE)
 	return result.returncode, result.stdout.decode('utf-8')
 
 def parse_traceroute_result(traceroute_result):

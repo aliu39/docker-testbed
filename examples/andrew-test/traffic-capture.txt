@@ -1,3 +1,0 @@
-05:21:38.624421 eth0  M   IP6 (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::a492:28ff:fe5e:7f6c > ip6-allrouters: [icmp6 sum ok] ICMP6, router solicitation, length 16
-	  source link-address option (1), length 8 (1): a6:92:28:5e:7f:6c
-

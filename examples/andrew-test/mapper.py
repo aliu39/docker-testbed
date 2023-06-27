@@ -8,6 +8,7 @@ import argparse
 import os
 import sys
 import subprocess
+import time
 from collections import defaultdict
 
 sys.path.append('../..')
@@ -17,6 +18,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-kn', '--known-list', type=str, required=False, default='fat-tree-list',
                     help='filename containing (container_name, ip) pairs, representing a list known servers on the network')
 args = parser.parse_args()
+
+TRAFFIC_CAPTURE_DURATION_S = 10
 
 known_servers = []
 with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
@@ -33,7 +36,8 @@ with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
                 exit(1)
 print(known_servers)
 
-# capture_traffic(server['name'], 'any', '10', 'examples/andrew-test/traffic-capture.txt')
+capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture.txt')
+capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture.txt')
 
 # map the network
 topology = {
@@ -59,3 +63,5 @@ for idx1, src in enumerate(known_servers):
 
 print(topology)
 print(sum(map(lambda e: len(e[1]), topology['links'].items())), "LINKS MAPPED")
+
+time.sleep(TRAFFIC_CAPTURE_DURATION_S)

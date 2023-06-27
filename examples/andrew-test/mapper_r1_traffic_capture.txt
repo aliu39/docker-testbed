@@ -1,0 +1,551 @@
+06:35:13.461076 eth1  In  IP (tos 0x0, ttl 1, id 52023, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.49793 > 10.0.11.6.33437: UDP, length 32
+06:35:13.461097 eth1  In  IP (tos 0x0, ttl 1, id 52024, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52826 > 10.0.11.6.33438: UDP, length 32
+06:35:13.461118 eth1  In  IP (tos 0x0, ttl 1, id 52025, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48887 > 10.0.11.6.33439: UDP, length 32
+06:35:13.461139 eth1  In  IP (tos 0x0, ttl 2, id 52026, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44420 > 10.0.11.6.33440: UDP, length 32
+06:35:13.461516 eth1  In  IP (tos 0x0, ttl 2, id 52027, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34472 > 10.0.11.6.33441: UDP, length 32
+06:35:13.461537 eth1  In  IP (tos 0x0, ttl 2, id 52028, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50054 > 10.0.11.6.33442: UDP, length 32
+06:35:13.461558 eth1  In  IP (tos 0x0, ttl 3, id 52029, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36876 > 10.0.11.6.33443: UDP, length 32
+06:35:13.462089 eth1  In  IP (tos 0x0, ttl 3, id 52030, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39994 > 10.0.11.6.33444: UDP, length 32
+06:35:13.462110 eth1  In  IP (tos 0x0, ttl 3, id 52031, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43375 > 10.0.11.6.33445: UDP, length 32
+06:35:13.462583 eth1  In  IP (tos 0x0, ttl 4, id 52032, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.32897 > 10.0.11.6.33446: UDP, length 32
+06:35:13.462604 eth1  In  IP (tos 0x0, ttl 4, id 52033, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50612 > 10.0.11.6.33447: UDP, length 32
+06:35:13.462625 eth1  In  IP (tos 0x0, ttl 4, id 52034, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39097 > 10.0.11.6.33448: UDP, length 32
+06:35:13.462646 eth1  In  IP (tos 0x0, ttl 5, id 52035, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36384 > 10.0.11.6.33449: UDP, length 32
+06:35:13.487300 eth1  Out IP (tos 0xc0, ttl 64, id 29818, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52023, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.49793 > 10.0.11.6.33437: UDP, length 32
+06:35:13.487391 eth1  Out IP (tos 0xc0, ttl 64, id 29819, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52024, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52826 > 10.0.11.6.33438: UDP, length 32
+06:35:13.487474 eth1  Out IP (tos 0xc0, ttl 64, id 29820, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52025, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48887 > 10.0.11.6.33439: UDP, length 32
+06:35:13.487558 eth2  Out IP (tos 0x0, ttl 1, id 52026, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44420 > 10.0.11.6.33440: UDP, length 32
+06:35:13.487641 eth2  Out IP (tos 0x0, ttl 1, id 52027, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34472 > 10.0.11.6.33441: UDP, length 32
+06:35:13.487723 eth2  Out IP (tos 0x0, ttl 1, id 52028, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50054 > 10.0.11.6.33442: UDP, length 32
+06:35:13.487804 eth2  Out IP (tos 0x0, ttl 2, id 52029, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36876 > 10.0.11.6.33443: UDP, length 32
+06:35:13.487885 eth2  Out IP (tos 0x0, ttl 2, id 52030, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39994 > 10.0.11.6.33444: UDP, length 32
+06:35:13.487966 eth2  Out IP (tos 0x0, ttl 2, id 52031, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43375 > 10.0.11.6.33445: UDP, length 32
+06:35:13.488047 eth2  Out IP (tos 0x0, ttl 3, id 52032, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.32897 > 10.0.11.6.33446: UDP, length 32
+06:35:13.488129 eth2  Out IP (tos 0x0, ttl 3, id 52033, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50612 > 10.0.11.6.33447: UDP, length 32
+06:35:13.488267 eth2  Out IP (tos 0x0, ttl 3, id 52034, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39097 > 10.0.11.6.33448: UDP, length 32
+06:35:13.488329 eth2  Out IP (tos 0x0, ttl 4, id 52035, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36384 > 10.0.11.6.33449: UDP, length 32
+06:35:13.488406 eth1  In  IP (tos 0x0, ttl 5, id 52038, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.60841 > 10.0.11.6.33450: UDP, length 32
+06:35:13.488450 eth1  In  IP (tos 0x0, ttl 5, id 52039, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.38858 > 10.0.11.6.33451: UDP, length 32
+06:35:13.488493 eth1  In  IP (tos 0x0, ttl 6, id 52040, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41082 > 10.0.11.6.33452: UDP, length 32
+06:35:13.514363 eth2  Out IP (tos 0x0, ttl 4, id 52038, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.60841 > 10.0.11.6.33450: UDP, length 32
+06:35:13.514492 eth2  Out IP (tos 0x0, ttl 4, id 52039, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.38858 > 10.0.11.6.33451: UDP, length 32
+06:35:13.514541 eth2  Out IP (tos 0x0, ttl 5, id 52040, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41082 > 10.0.11.6.33452: UDP, length 32
+06:35:13.514944 eth2  In  IP (tos 0xc0, ttl 64, id 21753, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52026, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44420 > 10.0.11.6.33440: UDP, length 32
+06:35:13.514979 eth2  In  IP (tos 0xc0, ttl 64, id 21754, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52027, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34472 > 10.0.11.6.33441: UDP, length 32
+06:35:13.515013 eth2  In  IP (tos 0xc0, ttl 64, id 21755, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52028, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50054 > 10.0.11.6.33442: UDP, length 32
+06:35:13.538175 eth2  In  IP (tos 0xc0, ttl 63, id 38610, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52029, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36876 > 10.0.11.6.33443: UDP, length 32
+06:35:13.538219 eth2  In  IP (tos 0xc0, ttl 63, id 38611, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52030, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39994 > 10.0.11.6.33444: UDP, length 32
+06:35:13.538262 eth2  In  IP (tos 0xc0, ttl 63, id 38612, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52031, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43375 > 10.0.11.6.33445: UDP, length 32
+06:35:13.538304 eth2  In  IP (tos 0xc0, ttl 63, id 38613, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52032, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.32897 > 10.0.11.6.33446: UDP, length 32
+06:35:13.538345 eth2  In  IP (tos 0xc0, ttl 63, id 38614, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52033, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50612 > 10.0.11.6.33447: UDP, length 32
+06:35:13.538387 eth2  In  IP (tos 0xc0, ttl 63, id 38615, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52034, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39097 > 10.0.11.6.33448: UDP, length 32
+06:35:13.541083 eth1  Out IP (tos 0xc0, ttl 63, id 21753, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52026, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44420 > 10.0.11.6.33440: UDP, length 32
+06:35:13.541154 eth1  Out IP (tos 0xc0, ttl 63, id 21754, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52027, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34472 > 10.0.11.6.33441: UDP, length 32
+06:35:13.541216 eth1  Out IP (tos 0xc0, ttl 63, id 21755, offset 0, flags [none], proto ICMP (1), length 88)
+    r4.r1-r4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 52028, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50054 > 10.0.11.6.33442: UDP, length 32
+06:35:13.565016 eth1  Out IP (tos 0xc0, ttl 62, id 38610, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52029, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36876 > 10.0.11.6.33443: UDP, length 32
+06:35:13.565109 eth1  Out IP (tos 0xc0, ttl 62, id 38611, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52030, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39994 > 10.0.11.6.33444: UDP, length 32
+06:35:13.565219 eth1  Out IP (tos 0xc0, ttl 62, id 38612, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 52031, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43375 > 10.0.11.6.33445: UDP, length 32
+06:35:13.565302 eth1  Out IP (tos 0xc0, ttl 62, id 38613, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52032, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.32897 > 10.0.11.6.33446: UDP, length 32
+06:35:13.565387 eth1  Out IP (tos 0xc0, ttl 62, id 38614, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52033, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50612 > 10.0.11.6.33447: UDP, length 32
+06:35:13.565471 eth1  Out IP (tos 0xc0, ttl 62, id 38615, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.11.6 > 10.0.9.6: ICMP 10.0.11.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 52034, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39097 > 10.0.11.6.33448: UDP, length 32
+06:35:13.638919 eth1  In  IP (tos 0x0, ttl 6, id 52159, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.59415 > 10.0.11.6.33453: UDP, length 32
+06:35:13.639079 eth1  In  IP (tos 0x0, ttl 6, id 52160, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.59862 > 10.0.11.6.33454: UDP, length 32
+06:35:13.639192 eth1  In  IP (tos 0x0, ttl 7, id 52161, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.46709 > 10.0.11.6.33455: UDP, length 32
+06:35:13.665406 eth2  Out IP (tos 0x0, ttl 5, id 52159, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.59415 > 10.0.11.6.33453: UDP, length 32
+06:35:13.665462 eth2  Out IP (tos 0x0, ttl 5, id 52160, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.59862 > 10.0.11.6.33454: UDP, length 32
+06:35:13.665513 eth2  Out IP (tos 0x0, ttl 6, id 52161, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.46709 > 10.0.11.6.33455: UDP, length 32
+06:35:14.161968 eth1  In  IP (tos 0x0, ttl 1, id 54980, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.53361 > 10.0.14.6.33437: UDP, length 32
+06:35:14.161985 eth1  In  IP (tos 0x0, ttl 1, id 54981, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43507 > 10.0.14.6.33438: UDP, length 32
+06:35:14.162002 eth1  In  IP (tos 0x0, ttl 1, id 54982, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.42381 > 10.0.14.6.33439: UDP, length 32
+06:35:14.162322 eth1  In  IP (tos 0x0, ttl 2, id 54983, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52589 > 10.0.14.6.33440: UDP, length 32
+06:35:14.162341 eth1  In  IP (tos 0x0, ttl 2, id 54984, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36182 > 10.0.14.6.33441: UDP, length 32
+06:35:14.162357 eth1  In  IP (tos 0x0, ttl 2, id 54985, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.58817 > 10.0.14.6.33442: UDP, length 32
+06:35:14.162373 eth1  In  IP (tos 0x0, ttl 3, id 54986, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41324 > 10.0.14.6.33443: UDP, length 32
+06:35:14.163420 eth1  In  IP (tos 0x0, ttl 3, id 54987, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36340 > 10.0.14.6.33444: UDP, length 32
+06:35:14.163441 eth1  In  IP (tos 0x0, ttl 3, id 54988, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34739 > 10.0.14.6.33445: UDP, length 32
+06:35:14.163462 eth1  In  IP (tos 0x0, ttl 4, id 54989, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44253 > 10.0.14.6.33446: UDP, length 32
+06:35:14.164072 eth1  In  IP (tos 0x0, ttl 4, id 54990, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36307 > 10.0.14.6.33447: UDP, length 32
+06:35:14.164093 eth1  In  IP (tos 0x0, ttl 4, id 54991, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48783 > 10.0.14.6.33448: UDP, length 32
+06:35:14.164156 eth1  In  IP (tos 0x0, ttl 5, id 54992, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.55450 > 10.0.14.6.33449: UDP, length 32
+06:35:14.183319 eth1  In  IP (tos 0x0, ttl 5, id 55008, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39463 > 10.0.14.6.33450: UDP, length 32
+06:35:14.183687 eth1  In  IP (tos 0x0, ttl 5, id 55009, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.51231 > 10.0.14.6.33451: UDP, length 32
+06:35:14.183730 eth1  In  IP (tos 0x0, ttl 6, id 55010, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.49503 > 10.0.14.6.33452: UDP, length 32
+06:35:14.187308 eth1  Out IP (tos 0xc0, ttl 64, id 30211, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54980, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.53361 > 10.0.14.6.33437: UDP, length 32
+06:35:14.187383 eth1  Out IP (tos 0xc0, ttl 64, id 30212, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54981, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.43507 > 10.0.14.6.33438: UDP, length 32
+06:35:14.187446 eth1  Out IP (tos 0xc0, ttl 64, id 30213, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54982, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.42381 > 10.0.14.6.33439: UDP, length 32
+06:35:14.187613 eth3  Out IP (tos 0x0, ttl 1, id 54983, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52589 > 10.0.14.6.33440: UDP, length 32
+06:35:14.187676 eth3  Out IP (tos 0x0, ttl 1, id 54984, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36182 > 10.0.14.6.33441: UDP, length 32
+06:35:14.187737 eth3  Out IP (tos 0x0, ttl 1, id 54985, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.58817 > 10.0.14.6.33442: UDP, length 32
+06:35:14.187798 eth3  Out IP (tos 0x0, ttl 2, id 54986, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41324 > 10.0.14.6.33443: UDP, length 32
+06:35:14.188704 eth3  Out IP (tos 0x0, ttl 2, id 54987, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36340 > 10.0.14.6.33444: UDP, length 32
+06:35:14.188767 eth3  Out IP (tos 0x0, ttl 2, id 54988, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34739 > 10.0.14.6.33445: UDP, length 32
+06:35:14.188829 eth3  Out IP (tos 0x0, ttl 3, id 54989, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44253 > 10.0.14.6.33446: UDP, length 32
+06:35:14.189384 eth3  Out IP (tos 0x0, ttl 3, id 54990, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36307 > 10.0.14.6.33447: UDP, length 32
+06:35:14.189434 eth3  Out IP (tos 0x0, ttl 3, id 54991, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48783 > 10.0.14.6.33448: UDP, length 32
+06:35:14.189482 eth3  Out IP (tos 0x0, ttl 4, id 54992, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.55450 > 10.0.14.6.33449: UDP, length 32
+06:35:14.208929 eth3  Out IP (tos 0x0, ttl 4, id 55008, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.39463 > 10.0.14.6.33450: UDP, length 32
+06:35:14.208969 eth3  Out IP (tos 0x0, ttl 4, id 55009, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.51231 > 10.0.14.6.33451: UDP, length 32
+06:35:14.209004 eth3  Out IP (tos 0x0, ttl 5, id 55010, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.49503 > 10.0.14.6.33452: UDP, length 32
+06:35:14.213665 eth3  In  IP (tos 0xc0, ttl 64, id 3958, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54983, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52589 > 10.0.14.6.33440: UDP, length 32
+06:35:14.213691 eth3  In  IP (tos 0xc0, ttl 64, id 3959, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54984, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36182 > 10.0.14.6.33441: UDP, length 32
+06:35:14.213730 eth3  In  IP (tos 0xc0, ttl 64, id 3960, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54985, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.58817 > 10.0.14.6.33442: UDP, length 32
+06:35:14.235431 eth3  In  IP (tos 0xc0, ttl 63, id 55049, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54986, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41324 > 10.0.14.6.33443: UDP, length 32
+06:35:14.235465 eth3  In  IP (tos 0xc0, ttl 63, id 55050, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54987, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36340 > 10.0.14.6.33444: UDP, length 32
+06:35:14.235575 eth3  In  IP (tos 0xc0, ttl 63, id 55051, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54988, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34739 > 10.0.14.6.33445: UDP, length 32
+06:35:14.235609 eth3  In  IP (tos 0xc0, ttl 63, id 55052, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54989, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44253 > 10.0.14.6.33446: UDP, length 32
+06:35:14.235873 eth3  In  IP (tos 0xc0, ttl 63, id 55053, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54990, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36307 > 10.0.14.6.33447: UDP, length 32
+06:35:14.235906 eth3  In  IP (tos 0xc0, ttl 63, id 55054, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54991, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48783 > 10.0.14.6.33448: UDP, length 32
+06:35:14.239025 eth1  Out IP (tos 0xc0, ttl 63, id 3958, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54983, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.52589 > 10.0.14.6.33440: UDP, length 32
+06:35:14.239088 eth1  Out IP (tos 0xc0, ttl 63, id 3959, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54984, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36182 > 10.0.14.6.33441: UDP, length 32
+06:35:14.239149 eth1  Out IP (tos 0xc0, ttl 63, id 3960, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.9.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 54985, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.58817 > 10.0.14.6.33442: UDP, length 32
+06:35:14.253377 eth1  In  IP (tos 0x0, ttl 6, id 55079, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.57988 > 10.0.14.6.33453: UDP, length 32
+06:35:14.253419 eth1  In  IP (tos 0x0, ttl 6, id 55080, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.57652 > 10.0.14.6.33454: UDP, length 32
+06:35:14.253451 eth1  In  IP (tos 0x0, ttl 7, id 55081, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50929 > 10.0.14.6.33455: UDP, length 32
+06:35:14.260824 eth1  Out IP (tos 0xc0, ttl 62, id 55049, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54986, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41324 > 10.0.14.6.33443: UDP, length 32
+06:35:14.260869 eth1  Out IP (tos 0xc0, ttl 62, id 55050, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54987, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36340 > 10.0.14.6.33444: UDP, length 32
+06:35:14.260963 eth1  Out IP (tos 0xc0, ttl 62, id 55051, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 54988, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.34739 > 10.0.14.6.33445: UDP, length 32
+06:35:14.261004 eth1  Out IP (tos 0xc0, ttl 62, id 55052, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54989, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.44253 > 10.0.14.6.33446: UDP, length 32
+06:35:14.261045 eth1  Out IP (tos 0xc0, ttl 62, id 55053, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54990, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.36307 > 10.0.14.6.33447: UDP, length 32
+06:35:14.261086 eth1  Out IP (tos 0xc0, ttl 62, id 55054, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.9.6: ICMP 10.0.14.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 54991, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.48783 > 10.0.14.6.33448: UDP, length 32
+06:35:14.278659 eth3  Out IP (tos 0x0, ttl 5, id 55079, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.57988 > 10.0.14.6.33453: UDP, length 32
+06:35:14.278699 eth3  Out IP (tos 0x0, ttl 5, id 55080, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.57652 > 10.0.14.6.33454: UDP, length 32
+06:35:14.278735 eth3  Out IP (tos 0x0, ttl 6, id 55081, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.50929 > 10.0.14.6.33455: UDP, length 32
+06:35:14.395672 eth1  In  IP (tos 0x0, ttl 7, id 55094, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41452 > 10.0.14.6.33456: UDP, length 32
+06:35:14.395732 eth1  In  IP (tos 0x0, ttl 7, id 55095, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.51545 > 10.0.14.6.33457: UDP, length 32
+06:35:14.395790 eth1  In  IP (tos 0x0, ttl 8, id 55096, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.56695 > 10.0.14.6.33458: UDP, length 32
+06:35:14.421174 eth3  Out IP (tos 0x0, ttl 6, id 55094, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.41452 > 10.0.14.6.33456: UDP, length 32
+06:35:14.421244 eth3  Out IP (tos 0x0, ttl 6, id 55095, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.51545 > 10.0.14.6.33457: UDP, length 32
+06:35:14.421307 eth3  Out IP (tos 0x0, ttl 7, id 55096, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.9.6.56695 > 10.0.14.6.33458: UDP, length 32
+06:35:14.481483 lo    In  IP (tos 0x0, ttl 64, id 33739, offset 0, flags [DF], proto UDP (17), length 68)
+    localhost.39260 > 127.0.0.11.56961: UDP, length 40
+06:35:14.508029 eth0  Out IP (tos 0x0, ttl 64, id 56206, offset 0, flags [DF], proto UDP (17), length 68)
+    fedefd608dd4.55862 > 192.168.65.5.53: 58302+ PTR? 6.11.0.10.in-addr.arpa. (40)
+06:35:14.512451 eth0  In  IP (tos 0x0, ttl 63, id 34238, offset 0, flags [DF], proto UDP (17), length 68)
+    192.168.65.5.53 > fedefd608dd4.55862: 58302 NXDomain 0/0/0 (40)
+06:35:14.512664 lo    In  IP (tos 0x0, ttl 64, id 51847, offset 0, flags [DF], proto UDP (17), length 68)
+    127.0.0.11.53 > localhost.39260: 58302 NXDomain 0/0/0 (40)
+06:35:14.512863 lo    In  IP (tos 0x0, ttl 64, id 33746, offset 0, flags [DF], proto UDP (17), length 67)
+    localhost.60652 > 127.0.0.11.56961: UDP, length 39
+06:35:14.538534 eth0  Out IP (tos 0x0, ttl 64, id 56207, offset 0, flags [DF], proto UDP (17), length 67)
+    fedefd608dd4.56639 > 192.168.65.5.53: 19526+ PTR? 6.9.0.10.in-addr.arpa. (39)
+06:35:14.615916 eth0  In  IP (tos 0x0, ttl 63, id 34306, offset 0, flags [DF], proto UDP (17), length 67)
+    192.168.65.5.53 > fedefd608dd4.56639: 19526 NXDomain 0/0/0 (39)
+06:35:14.616354 lo    In  IP (tos 0x0, ttl 64, id 51928, offset 0, flags [DF], proto UDP (17), length 67)
+    127.0.0.11.53 > localhost.60652: 19526 NXDomain 0/0/0 (39)
+06:35:14.617315 lo    In  IP (tos 0x0, ttl 64, id 33813, offset 0, flags [DF], proto UDP (17), length 67)
+    localhost.60742 > 127.0.0.11.56961: UDP, length 39
+06:35:14.617700 lo    In  IP (tos 0x0, ttl 64, id 51929, offset 0, flags [DF], proto UDP (17), length 110)
+    127.0.0.11.53 > localhost.60742: 16469 1/0/0 6.3.0.10.in-addr.arpa. PTR r4.r1-r4. (82)
+06:35:14.618394 lo    In  IP (tos 0x0, ttl 64, id 33814, offset 0, flags [DF], proto UDP (17), length 68)
+    localhost.51684 > 127.0.0.11.56961: UDP, length 40
+06:35:14.644102 eth0  Out IP (tos 0x0, ttl 64, id 56260, offset 0, flags [DF], proto UDP (17), length 68)
+    fedefd608dd4.37719 > 192.168.65.5.53: 21117+ PTR? 6.14.0.10.in-addr.arpa. (40)
+06:35:14.649358 eth0  In  IP (tos 0x0, ttl 63, id 34334, offset 0, flags [DF], proto UDP (17), length 68)
+    192.168.65.5.53 > fedefd608dd4.37719: 21117 NXDomain 0/0/0 (40)
+06:35:14.649686 lo    In  IP (tos 0x0, ttl 64, id 51943, offset 0, flags [DF], proto UDP (17), length 68)
+    127.0.0.11.53 > localhost.51684: 21117 NXDomain 0/0/0 (40)
+06:35:14.650521 lo    In  IP (tos 0x0, ttl 64, id 33841, offset 0, flags [DF], proto UDP (17), length 67)
+    localhost.40927 > 127.0.0.11.56961: UDP, length 39
+06:35:14.651001 lo    In  IP (tos 0x0, ttl 64, id 51944, offset 0, flags [DF], proto UDP (17), length 110)
+    127.0.0.11.53 > localhost.40927: 50277 1/0/0 6.4.0.10.in-addr.arpa. PTR r5.r1-r5. (82)
+06:35:14.807595 eth2  In  IP (tos 0x0, ttl 1, id 48607, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.35357 > 10.0.14.6.33437: UDP, length 32
+06:35:14.807639 eth2  In  IP (tos 0x0, ttl 1, id 48608, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48359 > 10.0.14.6.33438: UDP, length 32
+06:35:14.807681 eth2  In  IP (tos 0x0, ttl 1, id 48609, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53208 > 10.0.14.6.33439: UDP, length 32
+06:35:14.807724 eth2  In  IP (tos 0x0, ttl 2, id 48610, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49407 > 10.0.14.6.33440: UDP, length 32
+06:35:14.807766 eth2  In  IP (tos 0x0, ttl 2, id 48611, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53411 > 10.0.14.6.33441: UDP, length 32
+06:35:14.807808 eth2  In  IP (tos 0x0, ttl 2, id 48612, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37219 > 10.0.14.6.33442: UDP, length 32
+06:35:14.807850 eth2  In  IP (tos 0x0, ttl 3, id 48613, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.44827 > 10.0.14.6.33443: UDP, length 32
+06:35:14.807892 eth2  In  IP (tos 0x0, ttl 3, id 48614, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55027 > 10.0.14.6.33444: UDP, length 32
+06:35:14.807934 eth2  In  IP (tos 0x0, ttl 3, id 48615, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.42386 > 10.0.14.6.33445: UDP, length 32
+06:35:14.807976 eth2  In  IP (tos 0x0, ttl 4, id 48616, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.51289 > 10.0.14.6.33446: UDP, length 32
+06:35:14.808018 eth2  In  IP (tos 0x0, ttl 4, id 48617, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.40201 > 10.0.14.6.33447: UDP, length 32
+06:35:14.808060 eth2  In  IP (tos 0x0, ttl 4, id 48618, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37820 > 10.0.14.6.33448: UDP, length 32
+06:35:14.808102 eth2  In  IP (tos 0x0, ttl 5, id 48619, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48370 > 10.0.14.6.33449: UDP, length 32
+06:35:14.833615 eth2  Out IP (tos 0xc0, ttl 64, id 55635, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48607, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.35357 > 10.0.14.6.33437: UDP, length 32
+06:35:14.833707 eth2  Out IP (tos 0xc0, ttl 64, id 55636, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48608, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48359 > 10.0.14.6.33438: UDP, length 32
+06:35:14.833791 eth2  Out IP (tos 0xc0, ttl 64, id 55637, offset 0, flags [none], proto ICMP (1), length 88)
+    fedefd608dd4 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48609, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53208 > 10.0.14.6.33439: UDP, length 32
+06:35:14.833873 eth3  Out IP (tos 0x0, ttl 1, id 48610, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49407 > 10.0.14.6.33440: UDP, length 32
+06:35:14.833955 eth3  Out IP (tos 0x0, ttl 1, id 48611, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53411 > 10.0.14.6.33441: UDP, length 32
+06:35:14.834037 eth3  Out IP (tos 0x0, ttl 1, id 48612, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37219 > 10.0.14.6.33442: UDP, length 32
+06:35:14.834118 eth3  Out IP (tos 0x0, ttl 2, id 48613, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.44827 > 10.0.14.6.33443: UDP, length 32
+06:35:14.834413 eth3  Out IP (tos 0x0, ttl 2, id 48614, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55027 > 10.0.14.6.33444: UDP, length 32
+06:35:14.834498 eth3  Out IP (tos 0x0, ttl 2, id 48615, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.42386 > 10.0.14.6.33445: UDP, length 32
+06:35:14.834579 eth3  Out IP (tos 0x0, ttl 3, id 48616, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.51289 > 10.0.14.6.33446: UDP, length 32
+06:35:14.834661 eth3  Out IP (tos 0x0, ttl 3, id 48617, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.40201 > 10.0.14.6.33447: UDP, length 32
+06:35:14.834742 eth3  Out IP (tos 0x0, ttl 3, id 48618, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37820 > 10.0.14.6.33448: UDP, length 32
+06:35:14.834824 eth3  Out IP (tos 0x0, ttl 4, id 48619, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48370 > 10.0.14.6.33449: UDP, length 32
+06:35:14.834924 eth2  In  IP (tos 0x0, ttl 5, id 48621, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48067 > 10.0.14.6.33450: UDP, length 32
+06:35:14.834982 eth2  In  IP (tos 0x0, ttl 5, id 48622, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37301 > 10.0.14.6.33451: UDP, length 32
+06:35:14.835038 eth2  In  IP (tos 0x0, ttl 6, id 48623, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49371 > 10.0.14.6.33452: UDP, length 32
+06:35:14.861811 eth3  Out IP (tos 0x0, ttl 4, id 48621, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.48067 > 10.0.14.6.33450: UDP, length 32
+06:35:14.861884 eth3  Out IP (tos 0x0, ttl 4, id 48622, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37301 > 10.0.14.6.33451: UDP, length 32
+06:35:14.861954 eth3  Out IP (tos 0x0, ttl 5, id 48623, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49371 > 10.0.14.6.33452: UDP, length 32
+06:35:14.863475 eth3  In  IP (tos 0xc0, ttl 64, id 1796, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48610, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49407 > 10.0.14.6.33440: UDP, length 32
+06:35:14.863517 eth3  In  IP (tos 0xc0, ttl 64, id 1797, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48611, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53411 > 10.0.14.6.33441: UDP, length 32
+06:35:14.863550 eth3  In  IP (tos 0xc0, ttl 64, id 1798, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48612, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37219 > 10.0.14.6.33442: UDP, length 32
+06:35:14.885256 eth3  In  IP (tos 0xc0, ttl 63, id 43143, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48613, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.44827 > 10.0.14.6.33443: UDP, length 32
+06:35:14.885284 eth3  In  IP (tos 0xc0, ttl 63, id 43144, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48614, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55027 > 10.0.14.6.33444: UDP, length 32
+06:35:14.885305 eth3  In  IP (tos 0xc0, ttl 63, id 43145, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48615, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.42386 > 10.0.14.6.33445: UDP, length 32
+06:35:14.885326 eth3  In  IP (tos 0xc0, ttl 63, id 43146, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48616, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.51289 > 10.0.14.6.33446: UDP, length 32
+06:35:14.885350 eth3  In  IP (tos 0xc0, ttl 63, id 43147, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48617, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.40201 > 10.0.14.6.33447: UDP, length 32
+06:35:14.885370 eth3  In  IP (tos 0xc0, ttl 63, id 43148, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48618, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37820 > 10.0.14.6.33448: UDP, length 32
+06:35:14.888996 eth2  Out IP (tos 0xc0, ttl 63, id 1796, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48610, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.49407 > 10.0.14.6.33440: UDP, length 32
+06:35:14.889040 eth2  Out IP (tos 0xc0, ttl 63, id 1797, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48611, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.53411 > 10.0.14.6.33441: UDP, length 32
+06:35:14.889082 eth2  Out IP (tos 0xc0, ttl 63, id 1798, offset 0, flags [none], proto ICMP (1), length 88)
+    r5.r1-r5 > 10.0.11.6: ICMP time exceeded in-transit, length 68
+	IP (tos 0x0, ttl 1, id 48612, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37219 > 10.0.14.6.33442: UDP, length 32
+06:35:14.910505 eth2  Out IP (tos 0xc0, ttl 62, id 43143, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33443 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48613, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.44827 > 10.0.14.6.33443: UDP, length 32
+06:35:14.910541 eth2  Out IP (tos 0xc0, ttl 62, id 43144, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33444 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48614, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55027 > 10.0.14.6.33444: UDP, length 32
+06:35:14.910573 eth2  Out IP (tos 0xc0, ttl 62, id 43145, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33445 unreachable, length 68
+	IP (tos 0x0, ttl 1, id 48615, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.42386 > 10.0.14.6.33445: UDP, length 32
+06:35:14.910604 eth2  Out IP (tos 0xc0, ttl 62, id 43146, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33446 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48616, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.51289 > 10.0.14.6.33446: UDP, length 32
+06:35:14.910635 eth2  Out IP (tos 0xc0, ttl 62, id 43147, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33447 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48617, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.40201 > 10.0.14.6.33447: UDP, length 32
+06:35:14.910667 eth2  Out IP (tos 0xc0, ttl 62, id 43148, offset 0, flags [none], proto ICMP (1), length 88)
+    10.0.14.6 > 10.0.11.6: ICMP 10.0.14.6 udp port 33448 unreachable, length 68
+	IP (tos 0x0, ttl 2, id 48618, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.37820 > 10.0.14.6.33448: UDP, length 32
+06:35:14.997735 eth2  In  IP (tos 0x0, ttl 6, id 48726, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55110 > 10.0.14.6.33453: UDP, length 32
+06:35:14.997757 eth2  In  IP (tos 0x0, ttl 6, id 48727, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.33019 > 10.0.14.6.33454: UDP, length 32
+06:35:14.998044 eth2  In  IP (tos 0x0, ttl 7, id 48728, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.41002 > 10.0.14.6.33455: UDP, length 32
+06:35:15.022879 eth3  Out IP (tos 0x0, ttl 5, id 48726, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.55110 > 10.0.14.6.33453: UDP, length 32
+06:35:15.022903 eth3  Out IP (tos 0x0, ttl 5, id 48727, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.33019 > 10.0.14.6.33454: UDP, length 32
+06:35:15.023133 eth3  Out IP (tos 0x0, ttl 6, id 48728, offset 0, flags [none], proto UDP (17), length 60)
+    10.0.11.6.41002 > 10.0.14.6.33455: UDP, length 32
+06:35:15.472432 lo    In  IP (tos 0x0, ttl 64, id 33972, offset 0, flags [DF], proto UDP (17), length 69)
+    localhost.54799 > 127.0.0.11.56961: UDP, length 41
+06:35:15.503044 eth0  Out IP (tos 0x0, ttl 64, id 56755, offset 0, flags [DF], proto UDP (17), length 69)
+    fedefd608dd4.57322 > 192.168.65.5.53: 55161+ PTR? 11.0.0.127.in-addr.arpa. (41)
+06:35:15.511405 eth0  In  IP (tos 0x0, ttl 63, id 34953, offset 0, flags [DF], proto UDP (17), length 69)
+    192.168.65.5.53 > fedefd608dd4.57322: 55161 NXDomain 0/0/0 (41)
+06:35:15.512118 lo    In  IP (tos 0x0, ttl 64, id 52628, offset 0, flags [DF], proto UDP (17), length 69)
+    127.0.0.11.53 > localhost.54799: 55161 NXDomain 0/0/0 (41)
+06:35:15.512745 lo    In  IP (tos 0x0, ttl 64, id 33975, offset 0, flags [DF], proto UDP (17), length 71)
+    localhost.60524 > 127.0.0.11.56961: UDP, length 43
+06:35:15.539460 eth0  Out IP (tos 0x0, ttl 64, id 56769, offset 0, flags [DF], proto UDP (17), length 71)
+    fedefd608dd4.36567 > 192.168.65.5.53: 19448+ PTR? 5.65.168.192.in-addr.arpa. (43)
+06:35:15.639918 eth0  In  IP (tos 0x0, ttl 63, id 34972, offset 0, flags [DF], proto UDP (17), length 71)
+    192.168.65.5.53 > fedefd608dd4.36567: 19448 NXDomain 0/0/0 (43)
+06:35:15.640442 lo    In  IP (tos 0x0, ttl 64, id 52665, offset 0, flags [DF], proto UDP (17), length 71)
+    127.0.0.11.53 > localhost.60524: 19448 NXDomain 0/0/0 (43)
+06:35:18.507355 eth2  Out ARP, Ethernet (len 6), IPv4 (len 4), Request who-has r4.r1-r4 tell fedefd608dd4, length 28
+06:35:18.507421 eth1  Out ARP, Ethernet (len 6), IPv4 (len 4), Request who-has r3.r1-r3 tell fedefd608dd4, length 28
+06:35:18.507526 eth2  In  ARP, Ethernet (len 6), IPv4 (len 4), Request who-has fedefd608dd4 tell r4.r1-r4, length 28
+06:35:18.507719 eth1  In  ARP, Ethernet (len 6), IPv4 (len 4), Request who-has fedefd608dd4 tell r3.r1-r3, length 28
+06:35:18.533885 eth2  Out ARP, Ethernet (len 6), IPv4 (len 4), Reply fedefd608dd4 is-at 02:42:0a:00:03:05 (oui Unknown), length 28
+06:35:18.533982 eth1  Out ARP, Ethernet (len 6), IPv4 (len 4), Reply fedefd608dd4 is-at 02:42:0a:00:02:05 (oui Unknown), length 28
+06:35:18.534112 eth2  In  ARP, Ethernet (len 6), IPv4 (len 4), Reply r4.r1-r4 is-at 02:42:0a:00:03:06 (oui Unknown), length 28
+06:35:18.534132 eth1  In  ARP, Ethernet (len 6), IPv4 (len 4), Reply r3.r1-r3 is-at 02:42:0a:00:02:06 (oui Unknown), length 28
+06:35:18.544990 lo    In  IP (tos 0x0, ttl 64, id 36401, offset 0, flags [DF], proto UDP (17), length 67)
+    localhost.58522 > 127.0.0.11.56961: UDP, length 39
+06:35:18.546035 lo    In  IP (tos 0x0, ttl 64, id 54460, offset 0, flags [DF], proto UDP (17), length 110)
+    127.0.0.11.53 > localhost.58522: 40066 1/0/0 6.2.0.10.in-addr.arpa. PTR r3.r1-r3. (82)
+06:35:19.505154 eth0  In  ARP, Ethernet (len 6), IPv4 (len 4), Request who-has fedefd608dd4 tell 10.0.1.1, length 28
+06:35:19.529888 eth0  Out ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 10.0.1.1 tell fedefd608dd4, length 28
+06:35:19.529959 eth3  Out ARP, Ethernet (len 6), IPv4 (len 4), Request who-has r5.r1-r5 tell fedefd608dd4, length 28
+06:35:19.530120 eth0  In  ARP, Ethernet (len 6), IPv4 (len 4), Reply 10.0.1.1 is-at 02:42:d1:f5:d0:63 (oui Unknown), length 28
+06:35:19.530160 eth3  In  ARP, Ethernet (len 6), IPv4 (len 4), Request who-has fedefd608dd4 tell r5.r1-r5, length 28
+06:35:19.530522 eth0  Out ARP, Ethernet (len 6), IPv4 (len 4), Reply fedefd608dd4 is-at 02:42:0a:00:01:05 (oui Unknown), length 28
+06:35:19.555465 eth3  Out ARP, Ethernet (len 6), IPv4 (len 4), Reply fedefd608dd4 is-at 02:42:0a:00:04:05 (oui Unknown), length 28
+06:35:19.555515 eth3  In  ARP, Ethernet (len 6), IPv4 (len 4), Reply r5.r1-r5 is-at 02:42:0a:00:04:06 (oui Unknown), length 28
+06:35:19.567332 lo    In  IP (tos 0x0, ttl 64, id 36709, offset 0, flags [DF], proto UDP (17), length 67)
+    localhost.38702 > 127.0.0.11.56961: UDP, length 39
+06:35:19.596580 eth0  Out IP (tos 0x0, ttl 64, id 58700, offset 0, flags [DF], proto UDP (17), length 67)
+    fedefd608dd4.53369 > 192.168.65.5.53: 29037+ PTR? 1.1.0.10.in-addr.arpa. (39)
+06:35:19.694087 eth0  In  IP (tos 0x0, ttl 63, id 37410, offset 0, flags [DF], proto UDP (17), length 67)
+    192.168.65.5.53 > fedefd608dd4.53369: 29037 NXDomain 0/0/0 (39)
+06:35:19.694853 lo    In  IP (tos 0x0, ttl 64, id 54593, offset 0, flags [DF], proto UDP (17), length 67)
+    127.0.0.11.53 > localhost.38702: 29037 NXDomain 0/0/0 (39)
+
