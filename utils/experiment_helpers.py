@@ -106,8 +106,12 @@ def parse_traceroute_result(traceroute_result):
 	ips, rtts = [], []
 	for line in traceroute_result.splitlines()[1:]:
 		line = line.split()
-		ips.append(line[2].strip('()'))
-		rtts.append(float(line[3]))
+		i = 1
+		while i < len(line) and line[i] == '*':
+			i += 1
+		if i+2 < len(line):
+			ips.append(line[i+1].strip('()'))
+			rtts.append(float(line[i+2]))
 	return ips, rtts
 
 def get_subnet_cidr_from_ifconfig(server):

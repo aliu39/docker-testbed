@@ -36,8 +36,8 @@ with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
                 exit(1)
 print(known_servers)
 
-capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture')
-capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture')
+# capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture')
+# capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture')
 
 # map the network
 topology = {
@@ -64,7 +64,7 @@ for idx1, src in enumerate(known_servers):
 print(topology)
 print(sum(map(lambda e: len(e[1]), topology['links'].items())), "LINKS MAPPED")
 
-time.sleep(TRAFFIC_CAPTURE_DURATION_S)
+# time.sleep(TRAFFIC_CAPTURE_DURATION_S)
 
 # TODO: RESOLVE IP ALIASING
 '''
