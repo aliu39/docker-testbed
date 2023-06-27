@@ -15,11 +15,11 @@ sys.path.append('../..')
 from utils.experiment_helpers import traceroute, parse_traceroute_result, capture_traffic
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-kn', '--known-list', type=str, required=False, default='fat-tree-list',
+parser.add_argument('-kn', '--known-list', type=str, required=False, default='fat_tree_list',
                     help='filename containing (container_name, ip) pairs, representing a list known servers on the network')
 args = parser.parse_args()
 
-TRAFFIC_CAPTURE_DURATION_S = 10
+TRAFFIC_CAPTURE_DURATION_S = 5
 
 known_servers = []
 with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:

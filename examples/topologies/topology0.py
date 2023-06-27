@@ -1,4 +1,9 @@
 """
+Topology used by default experiment.py
+9 nodes, 8 links (no redundancy)
+"""
+
+"""
 Nodes Format:
 {node_name: (ip_addr, base_link name), ...}
 """
