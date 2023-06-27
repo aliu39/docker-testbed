@@ -15,7 +15,7 @@ from utils.experiment_helpers import pathneck, parse_pathneck_result, get_reacha
 
 server = {'name': 's1', 'ip': '10.0.4.4'}
 
-with open('ip_list.txt', 'r') as ip_list_file:
+with open('fat-tree-list', 'r') as ip_list_file:
     target_ips = ip_list_file.read().splitlines()
 
 # map the network

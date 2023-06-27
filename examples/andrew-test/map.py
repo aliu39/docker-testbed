@@ -4,7 +4,7 @@ Maps the network from a central server node
 - stores min rtt to all nodes and bottleneck BW to client ("data") nodes
 - TODO: periodic rebuilds?
 """
-
+import argparse
 import os
 import sys
 import subprocess
@@ -13,9 +13,14 @@ from collections import defaultdict
 sys.path.append('../..')
 from utils.experiment_helpers import traceroute, parse_traceroute_result, capture_traffic
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-kn', '--known-list', type=str, required=False, default='fat-tree-list',
+                    help='filename containing (container_name, ip) pairs, representing a list known servers on the network')
+args = parser.parse_args()
+
 known_servers = []
-with open('examples/andrew-test/ip_list.txt', 'r') as ip_list_file:
-    for line in ip_list_file.read().splitlines():
+with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
+    for line in known_file.read().splitlines():
         line = line.split('#', 1)[0]
         if line and not line.isspace():
             [name, ip] = line.split(',', 1)
@@ -26,6 +31,7 @@ with open('examples/andrew-test/ip_list.txt', 'r') as ip_list_file:
             else:
                 print(f"empty server name and/or ip in line: {line}")
                 exit(1)
+print(known_servers)
 
 # capture_traffic(server['name'], 'any', '10', 'examples/andrew-test/traffic-capture.txt')
 
