@@ -151,7 +151,7 @@ def del_route(container_name, ip_range):
 	:param ip_range: destination node ip address
 	:return: None
 	"""
-	cmd = f"docker exec {container_name} ip route delete {ip_range}"
+	cmd = f"docker exec {container_name} ip route del {ip_range}"
 	print(cmd)
 	os.system(cmd)
 
