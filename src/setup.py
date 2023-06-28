@@ -122,7 +122,7 @@ def detach(subnet_name, container_name):
 	os.system(cmd)
 
 
-def add_route(container_name, ip_range, gateway_ip, interface):
+def add_route(container_name, ip_range, gateway_ip, interface, verbose=False):
 	"""
 	Add routing rule for packets from a container to a subnet
 	:param container_name: name of src container
@@ -133,8 +133,12 @@ def add_route(container_name, ip_range, gateway_ip, interface):
 	"""
 	cmd = f"docker exec {container_name} ip route add {ip_range}" \
 	      f" via {gateway_ip} dev {interface}"
+	if verbose:
+		print(cmd)
 	cmdValue = os.system(cmd)
 	if cmdValue != 0:
+		if verbose:
+			print('failed, trying', cmd)
 		cmd = f"docker exec {container_name} ip route change {ip_range}" \
 		      f" via {gateway_ip} dev {interface}"
 		os.system(cmd)
@@ -148,6 +152,7 @@ def del_route(container_name, ip_range):
 	:return: None
 	"""
 	cmd = f"docker exec {container_name} ip route delete {ip_range}"
+	print(cmd)
 	os.system(cmd)
 
 
@@ -184,6 +189,7 @@ def generate_link_param(node_vs_eth, link_info):
 	:param link_info: contains the info provided for the link in the config file or add
 	and delete link commands.
 	:return: link_name, node_vs_eth, link_param
+	link_param (subnet, ((node1, ip1, iface), (node2, ip2, iface)), (bw, burst, latency))
 	"""
 	node0 = link_info[0]
 	node1 = link_info[1]
@@ -233,49 +239,54 @@ def main(args):
 	:param args: parameters describing network topology
 	:return: None
 	"""
-	if args.add_link is not None:
-		print(f'Adding link: {args.add_link}')
-		# Handling add_link functionality
+	if args.add_links is not None:
+		print(f'Adding links: {args.add_links}')
+		# Handling add_links functionality
 		current_state = read_state_json()
 		node_vs_eth = current_state["node_vs_eth"]
-		link_info = ast.literal_eval(args.add_link)
-		link_name, node_vs_eth, link_param = generate_link_param(node_vs_eth, link_info)
-		current_state["links"][link_name] = link_param
+		for link_info in ast.literal_eval(args.add_links):
+			link_name, node_vs_eth, link_param = generate_link_param(node_vs_eth, link_info)
+			print(f'Adding {link_name}')
+			current_state["links"][link_name] = link_param
+			create_subnet(link_param[0], link_name)
+			endpoints = link_param[1]
+			tc_params = link_param[2]
+			attach(endpoints[0][1], link_name, endpoints[0][0], endpoints[0][2], tc_params)
+			attach(endpoints[1][1], link_name, endpoints[1][0], endpoints[1][2], tc_params)
+		# for updating state.json
 		links = current_state["links"]
 		nodes = current_state["nodes"]
-		create_subnet(link_param[0], link_name)
-		endpoints = link_param[1]
-		tc_params = link_param[2]
-		attach(endpoints[0][1], link_name, endpoints[0][0], endpoints[0][2], tc_params)
-		attach(endpoints[1][1], link_name, endpoints[1][0], endpoints[1][2], tc_params)
-	elif args.remove_link:
-		print(f'Removing link: {args.remove_link}')
-		# Handling remove_link functionality
+		node_vs_ip = current_state["node_vs_ip"]
+	elif args.remove_links:
+		print(f'Removing links: {args.remove_links}')
+		# Handling remove_links functionality
 		current_state = read_state_json()
 		node_vs_eth_not_used = {}
-		link_info = ast.literal_eval(args.remove_link)
-		link_name, node_vs_eth_not_used, link_param = generate_link_param(node_vs_eth_not_used, link_info)
-		node_vs_eth = current_state["node_vs_eth"]
-		endpoints = link_param[1]
-		if link_name in current_state["links"]:
-			start_node = endpoints[0][0]
-			dest_node = endpoints[1][0]
-			# deleting direct connections due to this link in routing tables
-			for dest_node_ip in current_state["node_vs_ip"][dest_node]:
-				del_route(start_node, dest_node_ip)
-			# because bidirectional
-			for start_node_ip in current_state["node_vs_ip"][start_node]:
-				del_route(dest_node, start_node_ip)
-			# deleting from links data structure
-			del current_state["links"][link_name]
-		else:
-			print("Link being deleted not present.")
-			exit()
+		for link_info in ast.literal_eval(args.remove_links):
+			link_name, _, link_param = generate_link_param(node_vs_eth_not_used, link_info)
+			node_vs_eth = current_state["node_vs_eth"]
+			endpoints = link_param[1]
+			if link_name in current_state["links"]:
+				start_node = endpoints[0][0]
+				dest_node = endpoints[1][0]
+				# deleting direct connections due to this link in routing tables
+				for dest_node_ip in current_state["node_vs_ip"][dest_node]:
+					del_route(start_node, dest_node_ip)
+				# because bidirectional
+				for start_node_ip in current_state["node_vs_ip"][start_node]:
+					del_route(dest_node, start_node_ip)
+				# deleting from links data structure
+				del current_state["links"][link_name]
+			else:
+				print("Link being deleted not present.")
+				exit()
+			detach(link_name, endpoints[0][0])
+			detach(link_name, endpoints[1][0])
+			remove_subnet(link_name)  # remove subnet after detaching containers or containers will get killed.
+		# for updating state.json
 		links = current_state["links"]
 		nodes = current_state["nodes"]
-		detach(link_name, endpoints[0][0])
-		detach(link_name, endpoints[1][0])
-		remove_subnet(link_name)  # remove subnet after detaching containers or containers will get killed.
+		node_vs_ip = current_state["node_vs_ip"]
 	# Reading and storing information from the config.py file
 	elif args.config is not None:
 		config = importlib.import_module(args.config)
@@ -370,9 +381,9 @@ def main(args):
 if __name__ == "__main__":
 	# parse arguments
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-al', '--add-link', type=str, required=False, default=None,
+	parser.add_argument('-al', '--add-links', type=str, required=False, default=None,
 	                    help='link info of link to add')
-	parser.add_argument('-rl', '--remove-link', type=str, required=False,
+	parser.add_argument('-rl', '--remove-links', type=str, required=False,
 	                    default=None, help='link info of link to remove')
 	parser.add_argument('-c', '--config', type=str, required=False, default='topology_config',
 	                    help='config file describing topology to set up '

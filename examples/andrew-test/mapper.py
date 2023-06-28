@@ -36,13 +36,13 @@ with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
                 exit(1)
 print(known_servers)
 
-# capture_traffic('r1', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r1_traffic_capture')
-# capture_traffic('r2', 'any', TRAFFIC_CAPTURE_DURATION_S, 'examples/andrew-test/mapper_r2_traffic_capture')
-
 # map the network
 topology = {
     'links': defaultdict(dict)     # adjacency list with each link mapping to a list of rtts
 }
+
+# capture_traffic('s1', 'any', TRAFFIC_CAPTURE_DURATION_S, f'examples/andrew-test/mapper_s1_traffic_capture')
+# time.sleep(TRAFFIC_CAPTURE_DURATION_S)
 
 for idx1, src in enumerate(known_servers):
     for idx2 in range(idx1+1, len(known_servers)):
@@ -61,10 +61,13 @@ for idx1, src in enumerate(known_servers):
 
                 prev_hop = ip
 
-print(topology)
-print(sum(map(lambda e: len(e[1]), topology['links'].items())), "LINKS MAPPED")
-
-# time.sleep(TRAFFIC_CAPTURE_DURATION_S)
+# print(topology)
+print(sum(map(lambda x: len(x), topology['links'].values())), "LINKS MAPPED")
+for ip1 in topology['links']:
+    print(f'{ip1}:', end=' ')
+    for ip2 in topology['links'][ip1]:
+        print(ip2, end=' ')
+    print()
 
 # TODO: RESOLVE IP ALIASING
 '''
