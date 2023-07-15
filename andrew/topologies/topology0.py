@@ -1,5 +1,5 @@
 """
-Topology used by default experiment.py
+Topology used by base commit's experiment.py
 9 nodes, 8 links (no redundancy)
 """
 

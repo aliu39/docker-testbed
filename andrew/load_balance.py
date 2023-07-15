@@ -6,7 +6,7 @@ import os
 import sys
 from collections import defaultdict
 
-sys.path.append('../..')
+sys.path.append('..')
 from utils.experiment_helpers import pathneck, parse_pathneck_result
 
 clients = [

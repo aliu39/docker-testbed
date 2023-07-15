@@ -5,48 +5,45 @@ Maps the network from a central server node
 - TODO: periodic rebuilds?
 """
 import argparse
-import os
 import sys
-import subprocess
 import time
 from collections import defaultdict
 
-sys.path.append('../..')
 from utils.experiment_helpers import traceroute, parse_traceroute_result, capture_traffic
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-kn', '--known-list', type=str, required=False, default='fat_tree_list',
-                    help='filename containing (container_name, ip) pairs, representing a list known servers on the network')
+parser.add_argument('-t', '--topology', type=str, required=False, default='fat_tree',
+                    help='topology associated with "vantage point" servers, which traceroutes are run between')
 args = parser.parse_args()
 
 TRAFFIC_CAPTURE_DURATION_S = 5
 
-known_servers = []
-with open(f'examples/andrew-test/{args.known_list}', 'r') as known_file:
-    for line in known_file.read().splitlines():
+query_servers = []
+with open(f'andrew/ip_lists/{args.topology}', 'r') as query_file:
+    for line in query_file.read().splitlines():
         line = line.split('#', 1)[0]
         if line and not line.isspace():
-            [name, ip] = line.split(',', 1)
-            name = name.strip(' ( "')
-            ip = ip.strip('\n ) "')
+            [name, ip] = line.split(':', 1)
+            name = name.strip(' "')
+            ip = ip.strip('\n () "')
             if name and ip:
-                known_servers.append({'name': name, 'ip': ip})
+                query_servers.append({'name': name, 'ip': ip})
             else:
                 print(f"empty server name and/or ip in line: {line}")
                 exit(1)
-print(known_servers)
+print(query_servers)
 
 # map the network
 topology = {
     'links': defaultdict(dict)     # adjacency list with each link mapping to a list of rtts
 }
 
-# capture_traffic('s1', 'any', TRAFFIC_CAPTURE_DURATION_S, f'examples/andrew-test/mapper_s1_traffic_capture')
+# capture_traffic('s1', 'any', TRAFFIC_CAPTURE_DURATION_S, f'examples/andrew/out/mapper_s1_traffic_capture')
 # time.sleep(TRAFFIC_CAPTURE_DURATION_S)
 
-for idx1, src in enumerate(known_servers):
-    for idx2 in range(idx1+1, len(known_servers)):
-        returncode, output = traceroute(src['name'], known_servers[idx2]['ip'])
+for idx1, src in enumerate(query_servers):
+    for idx2 in range(idx1+1, len(query_servers)):
+        returncode, output = traceroute(src['name'], query_servers[idx2]['ip'])
         print(returncode, output)
         if returncode == 0:
             prev_hop = src['ip']

@@ -144,7 +144,7 @@ def add_route(container_name, ip_range, gateway_ip, interface, verbose=False):
 		os.system(cmd)
 
 
-def del_route(container_name, ip_range):
+def del_route(container_name, ip_range, verbose=False):
 	"""
 	Deleting routing rule corresponding to a link
 	:param container_name: name of src container
@@ -152,7 +152,8 @@ def del_route(container_name, ip_range):
 	:return: None
 	"""
 	cmd = f"docker exec {container_name} ip route del {ip_range}"
-	print(cmd)
+	if verbose:
+		print(cmd)
 	os.system(cmd)
 
 

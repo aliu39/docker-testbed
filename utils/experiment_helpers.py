@@ -76,6 +76,14 @@ def parse_pathneck_result(pathneck_result):
 				return bottleneck, bottleneck_bw
 	return None, None
 
+def ping(client_name, server_ip, query_timeout_s=5, n_queries=3):
+	cmd = ['docker', 'exec', client_name, 'timeout', str(n_queries*query_timeout_s), 'ping', '-c', str(n_queries), server_ip]
+	result = subprocess.run(cmd, stdout=subprocess.PIPE)
+	return result.returncode, result.stdout.decode('utf-8')
+
+	# if using os.system():
+	# exit_status = os.WEXITSTATUS(status)  # https://stackoverflow.com/questions/6466711/what-is-the-return-value-of-os-system-in-python
+
 def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=30, use_icmp=False, udp_port=None):
 	"""
 	Run traceroute from client to server
@@ -85,14 +93,14 @@ def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=
 	"""
 	# TODO: take average rtt over all queries, and consider using num trials
 	# USE ICMP (default on linux is UDP)
-	cmd = ['docker', 'exec', f'{client_name}', 'timeout', str(n_queries*query_timeout_s), 'traceroute']\
+	cmd = ['docker', 'exec', client_name, 'timeout', str(n_queries*query_timeout_s), 'traceroute']\
 		+ ['-q', str(n_queries), '-m', str(max_hops)]
 	if use_icmp:
 		cmd.append('-I')
 	if udp_port is not None:
 		cmd.append('-U')
 		cmd.append(str(udp_port))
-	cmd += [f'{server_ip}']
+	cmd += [server_ip]
 	result = subprocess.run(cmd, stdout=subprocess.PIPE)
 	return result.returncode, result.stdout.decode('utf-8')
 
