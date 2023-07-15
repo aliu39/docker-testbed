@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+COPY andrew/server.py /server.py
+
 # Update the package list and install the necessary packages
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

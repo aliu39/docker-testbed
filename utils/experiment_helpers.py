@@ -55,7 +55,7 @@ def pathneck(client_name, server_ip):
 	"""
 	result = subprocess.run(['docker', 'exec', f'{client_name}', './pathneck-1.3/pathneck', '-o', f'{server_ip}'],
 	                        stdout=subprocess.PIPE)
-	return result.stdout.decode('utf-8')
+	return result.returncode, result.stdout.decode('utf-8')
 
 
 def parse_pathneck_result(pathneck_result):
