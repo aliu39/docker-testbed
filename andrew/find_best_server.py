@@ -22,7 +22,7 @@ parser.add_argument('-s', '--servers', type=str, required=True,
                     help='list of server ips for data node to connect to')
 args = parser.parse_args()
 
-(client_name, client_ip) = ast.literal_eval(args.client)
+(client, client_ip) = ast.literal_eval(args.client)
 data_size_kB = args.data_size
 servers = ast.literal_eval(args.servers)
 server_info = defaultdict(dict)  # key is server ip
@@ -32,7 +32,6 @@ PROCESS_POWER_PORT = 49420
 SOCK_TIMEOUT_S = 10
 MbPS_TO_KBPS = 125
 
-
 best_server_ip, min_process_t = None, float('inf')
 for server, ip in servers:
     # start server program to listen for processing power requests
@@ -41,14 +40,15 @@ for server, ip in servers:
     # try to reach server and request processing power, via TCP
     power = None  # kiloBytes/s, not kilobits
     try:
-        result = subprocess.run(['docker', 'exec', client_name, 'python3', '-c',
-                                 f"""import socket
+        power_request_program = f"""import socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     sock.settimeout({SOCK_TIMEOUT_S})
     sock.connect(('{ip}', {PROCESS_POWER_PORT}))
     sock.sendall(b'Request power')
     power = float(sock.recv(1024).decode('utf-8'))
-    print('POWER:', power)"""], stdout=subprocess.PIPE)
+    print('POWER:', power)"""
+        result = subprocess.run(['docker', 'exec', client, 'python3', '-c', power_request_program],
+                                stdout=subprocess.PIPE)
 
         for line in result.stdout.decode('utf-8').splitlines():
             if 'POWER' in line:
@@ -61,7 +61,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         continue
 
     # measure bottleneck
-    pathneck_retcode, pathneck_result = pathneck(client_name, ip)
+    pathneck_retcode, pathneck_result = pathneck(client, ip)
     print(pathneck_retcode, pathneck_result)
 
     bottleneck_link, bottleneck_bw = None, None
