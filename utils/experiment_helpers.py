@@ -45,6 +45,25 @@ def iperf_client(node_name, server_ip):
 		print(f"Command {e.cmd} returned non-zero exit status: {e.returncode}")
 
 
+def iperf_client_bw(node_name, server_ip, t=10):
+	"""
+		Start iperf client on node and send data/BLOCKS for t seconds
+		:param node_name: name of client node
+		:param server_ip: ip address of server node
+		:param t: time to send data for
+		:return: bandwidth estimate, in MB/s
+		"""
+	cmd = ['docker', 'exec', node_name, 'iperf', '-t', str(t), '-c', server_ip]
+	res = subprocess.run(cmd, stdout=subprocess.PIPE)
+	if res.returncode == 0:
+		for line in res.stdout.decode('utf-8').splitlines():
+			if 'Mbits/sec' in line:
+				return float(line.split()[-2])
+	else:
+		print(f'iperf_client_bw failed with exit code {res.returncode}')
+	return None
+
+
 def pathneck(client_name, server_ip):
 	"""
 	Run pathneck from client to server
@@ -76,13 +95,12 @@ def parse_pathneck_result(pathneck_result):
 				return bottleneck, bottleneck_bw
 	return None, None
 
+
 def ping(client_name, server_ip, query_timeout_s=5, n_queries=3):
 	cmd = ['docker', 'exec', client_name, 'timeout', str(n_queries*query_timeout_s), 'ping', '-c', str(n_queries), server_ip]
 	result = subprocess.run(cmd, stdout=subprocess.PIPE)
 	return result.returncode, result.stdout.decode('utf-8')
 
-	# if using os.system():
-	# exit_status = os.WEXITSTATUS(status)  # https://stackoverflow.com/questions/6466711/what-is-the-return-value-of-os-system-in-python
 
 def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=30, use_icmp=False, udp_port=None):
 	"""
@@ -104,6 +122,7 @@ def traceroute(client_name, server_ip, query_timeout_s=5, n_queries=3, max_hops=
 	result = subprocess.run(cmd, stdout=subprocess.PIPE)
 	return result.returncode, result.stdout.decode('utf-8')
 
+
 def parse_traceroute_result(traceroute_result):
 	"""
 	Returns detected bottleneck and estimated bandwidth
@@ -122,6 +141,7 @@ def parse_traceroute_result(traceroute_result):
 			rtts.append(float(line[i+2]))
 	return ips, rtts
 
+
 def get_subnet_cidr_from_ifconfig(server):
 	ifconfig_result = subprocess.run(['docker', 'exec', f'{server["name"]}', 'ifconfig'], stdout=subprocess.PIPE) \
 		.stdout.decode('utf-8')
@@ -138,6 +158,7 @@ def get_subnet_cidr_from_ifconfig(server):
 
 	subnet = ip_network(f"{server['ip']}/{subnet_mask}", strict=False)
 	return f'{subnet.network_address}/{subnet.prefixlen}'
+
 
 def get_reachable_ips(server, subnet_cidr):
 	print(f'getting reachable ips for subnet {subnet_cidr}..')

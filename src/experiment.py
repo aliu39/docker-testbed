@@ -5,6 +5,7 @@ with a capacity determined bottleneck
 import os
 import sys
 import traceback
+import time
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -13,31 +14,29 @@ sys.path.append('..')
 from utils.experiment_helpers import iperf_server, iperf_client, pathneck, parse_pathneck_result, capture_traffic
 
 # global variables
-n_iter = 20
+n_iter = 50
 bottleneck_bandwidth = []
 data = {'00': [], '01': [], '02': [], '03': [], '04': [], '05': []}
 
 server = {'name': 's1', 'ip': '10.0.4.4'}
 contesting_client = 'c2'
 client = 'c1'
-bottleneck_link_dest = {'name': 'r6', 'ip': '10.0.8.4'}
-bottleneck_router = 'r5'
+bottleneck_link_dest = {'name': 'r3', 'ip': '10.0.2.4'}
+bottleneck_router = 'r2'
 
 # setup iperf server on bottleneck link destination
-iperf_server(bottleneck_link_dest['name'])
+# iperf_server(bottleneck_link_dest['name'])
 
 # generate background traffic
-iperf_client(contesting_client, bottleneck_link_dest['ip'])
+# iperf_client(contesting_client, bottleneck_link_dest['ip'])
+# iperf_client(client, bottleneck_link_dest['ip'])
 
 # capture traffic on bottleneck router
-capture_traffic(bottleneck_router, 'eth1', '180', 'traffic-capture')
-
-# import time
-# time.sleep(10)
+# capture_traffic(bottleneck_router, 'eth1', f'{n_iter * 1.5}', 'traffic-capture')
 
 # run pathneck from client to server
 for i in range(n_iter):
-    result = pathneck(client, server['ip'])
+    retcode, result = pathneck(client, server['ip'])
     print(result)
     bottleneck, bottleneck_bw = parse_pathneck_result(result)
     if bottleneck is not None:

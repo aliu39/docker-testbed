@@ -1,5 +1,0 @@
-01:56:56.456500 eth0  Out ARP, Ethernet (len 6), IPv4 (len 4), Request who-has r5.r5-s6 tell 2d4e6f7e7f9f, length 28
-01:56:56.456520 eth0  In  ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 2d4e6f7e7f9f tell r5.r5-s6, length 28
-01:56:56.467843 eth0  Out ARP, Ethernet (len 6), IPv4 (len 4), Reply 2d4e6f7e7f9f is-at 02:42:0a:00:0e:06 (oui Unknown), length 28
-01:56:56.467896 eth0  In  ARP, Ethernet (len 6), IPv4 (len 4), Reply r5.r5-s6 is-at 02:42:0a:00:0e:05 (oui Unknown), length 28
-
