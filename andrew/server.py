@@ -34,12 +34,12 @@ if __name__ == '__main__':
 
                 if bytes_expected:  # interpret as data
                     bytes_expected = max(bytes_expected - len(in_msg), 0)
-                    conn.sendall(in_msg)  # echo data
-
                     clients_lock.acquire()
                     clients[addr]['load'] -= len(in_msg)
                     total_load -= len(in_msg)
                     clients_lock.release()
+
+                    conn.sendall(in_msg)  # echo data
                     # TODO: make a way to cancel data transfer?
                     continue
 
@@ -66,12 +66,22 @@ if __name__ == '__main__':
                         bytes_expected *= 1e9
                     elif unit != 'b':
                         print(f'server warning: unexpected data unit {unit}')
+                    bytes_expected = int(bytes_expected)
 
                     # track load in clients
                     clients_lock.acquire()
                     clients[addr]['load'] = bytes_expected
                     total_load += bytes_expected
                     clients_lock.release()
+
+                    if len(lines) > 2:
+                        in_msg = '\n'.join(lines[2:])
+                        bytes_expected = max(bytes_expected - len(in_msg), 0)
+                        clients_lock.acquire()
+                        clients[addr]['load'] -= len(in_msg)
+                        total_load -= len(in_msg)
+                        clients_lock.release()
+                        conn.sendall(bytes(in_msg, encoding='utf8'))  # echo data
 
                 else:
                     print(f'server error: unexpected message {in_msg[:min(len(in_msg), 100)]}')

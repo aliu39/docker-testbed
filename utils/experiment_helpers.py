@@ -16,7 +16,7 @@ def capture_traffic(node_name, interface, duration, filename):
 	"""
 	try:
 		subprocess.check_call(f"docker exec {node_name} timeout {duration} tcpdump -v -i {interface} > {filename} &", shell=True)
-	except subprocess.CalledProcessError as e:
+	except subprocess.CalledProcessrror as e:
 		print(f"Command {e.cmd} returned non-zero exit status: {e.returncode}")
 
 

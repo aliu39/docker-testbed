@@ -14,7 +14,7 @@ from collections import defaultdict
 
 from utils.experiment_helpers import pathneck, parse_pathneck_result, ping, iperf_server, iperf_client_bw, iperf_client
 from andrew.server import PORT as SERVER_PORT
-from andrew.client_requests import power_request
+from andrew.client_requests import make_power_request, make_process_data_request
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--client', type=str, required=True,
@@ -39,32 +39,39 @@ SOCK_TIMEOUT_S = 10
 MbPS_TO_MBPS = 1/8
 
 # start background traffic from contesting clients
-for server, _ in servers:
-    iperf_server(server)
+# for server, _ in servers:
+#     iperf_server(server)
+#
+# # contesting_clients = [
+# #     ('c3', '10.0.4.5'),  # ip is for target SERVER
+# #     ('c4', '10.0.3.5'),
+# # ]
+# for c, server_ip in contesting_clients:
+#     iperf_client(c, server_ip)
 
-# contesting_clients = [
-#     ('c3', '10.0.4.5'),  # ip is for target SERVER
-#     ('c4', '10.0.3.5'),
-# ]
+# start server program to listen for power and process_data requests
+for server, _ in servers:
+    subprocess.Popen(['docker', 'exec', server, 'python3', 'server.py'])
+
+contesting_clients = [
+    ('c3', '10.0.4.5'),  # ip is for target SERVER
+]
+
 for c, server_ip in contesting_clients:
-    iperf_client(c, server_ip)
+    process_data_request_code = make_process_data_request(SOCK_TIMEOUT_S, server_ip, SERVER_PORT, 0.2)
+    subprocess.Popen(['docker', 'exec', c, 'python3', '-c', process_data_request_code])
+time.sleep(30)
+exit(0)
 
 # find best server
 best_server_ip, min_process_t = None, float('inf')
-for server, _ in servers:
-    # start server program to listen for processing power requests
-    subprocess.Popen(['docker', 'exec', server, 'python3', 'server.py'])
-
 for server, ip in servers:
     # try to reach server and request processing power, via TCP
     power = None  # note: megaByte/s, not megabits
     try:
-        power_request_code = power_request(SOCK_TIMEOUT_S, ip, SERVER_PORT)
+        power_request_code = make_power_request(SOCK_TIMEOUT_S, ip, SERVER_PORT)
         result = subprocess.run(['docker', 'exec', client, 'python3', '-c', power_request_code], stdout=subprocess.PIPE)
-        for line in result.stdout.decode('utf-8').splitlines():
-            if 'POWER' in line:
-                power = float(line.split(':')[1])
-                break
+        power = float(result.stdout.decode('utf-8'))
     except:
         traceback.print_exc()
 

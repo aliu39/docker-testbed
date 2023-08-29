@@ -21,50 +21,55 @@ data = {'00': [], '01': [], '02': [], '03': [], '04': [], '05': []}
 server = {'name': 's1', 'ip': '10.0.4.4'}
 contesting_client = 'c2'
 client = 'c1'
-bottleneck_link_dest = {'name': 'r3', 'ip': '10.0.2.4'}
-bottleneck_router = 'r2'
+bottleneck_link_dest = {'name': 'r6', 'ip': '10.0.8.4'}
+bottleneck_router = 'r5'
 
 # setup iperf server on bottleneck link destination
-# iperf_server(bottleneck_link_dest['name'])
+iperf_server(bottleneck_link_dest['name'])
 
 # generate background traffic
-# iperf_client(contesting_client, bottleneck_link_dest['ip'])
-# iperf_client(client, bottleneck_link_dest['ip'])
+iperf_client(contesting_client, bottleneck_link_dest['ip'])
+iperf_client(client, bottleneck_link_dest['ip'])
 
 # capture traffic on bottleneck router
 # capture_traffic(bottleneck_router, 'eth1', f'{n_iter * 1.5}', 'traffic-capture')
 
-# run pathneck from client to server
-for i in range(n_iter):
-    retcode, result = pathneck(client, server['ip'])
-    print(result)
-    bottleneck, bottleneck_bw = parse_pathneck_result(result)
-    if bottleneck is not None:
-        bottleneck_bandwidth.append(bottleneck_bw)
-        data[bottleneck].append(bottleneck_bw)
+traffic_capture_dur = 3
 
-# plot bandwidth test results
-try:
-    total_data = [data[key] for key in data]
-    sns.stripplot(data=total_data, jitter=True, color='black')
-    sns.boxplot(total_data)
-    plt.xlabel('Hop ID')
-    plt.ylabel('Measured bandwidth ')
-    plt.title(f'Bandwidth [Mbits/sec] distributions of detected bottlenecks')
-    plt.savefig('pathneck-boxplot')
-    plt.show()
-except:
-    print("FAILED to plot bandwidth test results:")
-    print(data)
-    traceback.print_exc()
+capture_traffic('r1', 'eth1', f'{traffic_capture_dur}', 'r1-traffic1')
+capture_traffic('r1', 'eth0', f'{traffic_capture_dur}', 'r1-traffic0')
+capture_traffic('r3', 'eth1', f'{traffic_capture_dur}', 'r3-traffic1')
+capture_traffic('r3', 'eth0', f'{traffic_capture_dur}', 'r3-traffic0')
+capture_traffic('r5', 'eth1', f'{traffic_capture_dur}', 'r5-traffic1')
+capture_traffic('r5', 'eth0', f'{traffic_capture_dur}', 'r5-traffic0')
+
+time.sleep(traffic_capture_dur)
+
+# # run pathneck from client to server
+# for i in range(n_iter):
+#     retcode, result = pathneck(client, server['ip'])
+#     print(result)
+#     bottleneck, bottleneck_bw = parse_pathneck_result(result)
+#     if bottleneck is not None:
+#         bottleneck_bandwidth.append(bottleneck_bw)
+#         data[bottleneck].append(bottleneck_bw)
+#
+# # plot bandwidth test results
+# try:
+#     total_data = [data[key] for key in data]
+#     sns.stripplot(data=total_data, jitter=True, color='black')
+#     sns.boxplot(total_data)
+#     plt.xlabel('Hop ID')
+#     plt.ylabel('Measured bandwidth ')
+#     plt.title(f'Bandwidth [Mbits/sec] distributions of detected bottlenecks')
+#     plt.savefig('pathneck-boxplot')
+#     plt.show()
+# except:
+#     print("FAILED to plot bandwidth test results:")
+#     print(data)
+#     traceback.print_exc()
 
 os.system(f"docker exec {contesting_client} pkill iperf")
 os.system(f"docker exec {client} pkill iperf")
 os.system(f"docker exec {server['name']} pkill iperf")
 os.system(f"docker exec {bottleneck_link_dest['name']} pkill iperf")
-
-# wait not found on containers
-# os.system(f"docker exec {contesting_client} wait $(pgrep iperf)")
-# os.system(f"docker exec {client} wait $(pgrep iperf)")
-# os.system(f"docker exec {server['name']} wait $(pgrep iperf)")
-# os.system(f"docker exec {bottleneck_link_dest['name']} wait $(pgrep iperf)")
