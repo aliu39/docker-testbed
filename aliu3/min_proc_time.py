@@ -14,8 +14,8 @@ import traceback
 from collections import defaultdict
 
 from utils.experiment_helpers import pathneck, parse_pathneck_result, ping, iperf_server, iperf_client_bw, iperf_client
-from andrew.server import PORT as SERVER_PORT
-from andrew.client_scripts import make_request_power_script, make_send_data_script
+from aliu3.server import PORT as SERVER_PORT
+from aliu3.client_scripts import make_request_power_script, make_send_data_script
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--client', type=str, required=True,

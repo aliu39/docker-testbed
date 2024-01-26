@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-COPY andrew/server.py /server.py
+COPY aliu3/server.py /server.py
 
 # Update the package list and install the necessary packages
 RUN apt-get update && \

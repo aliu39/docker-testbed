@@ -19,7 +19,7 @@ args = parser.parse_args()
 TRAFFIC_CAPTURE_DURATION_S = 5
 
 query_servers = []
-with open(f'andrew/ip_lists/{args.topology}', 'r') as query_file: #TODO: parse ips directly from topology file
+with open(f'aliu3/ip_lists/{args.topology}', 'r') as query_file: #TODO: parse ips directly from topology file
     for line in query_file.read().splitlines():
         line = line.split('#', 1)[0]
         if line and not line.isspace():
@@ -38,7 +38,7 @@ topology = {
     'links': defaultdict(dict)     # adjacency list with each link mapping to a list of rtts
 }
 
-# capture_traffic('s1', 'any', TRAFFIC_CAPTURE_DURATION_S, f'examples/andrew/out/mapper_s1_traffic_capture')
+# capture_traffic('s1', 'any', TRAFFIC_CAPTURE_DURATION_S, f'examples/aliu3/out/mapper_s1_traffic_capture')
 # time.sleep(TRAFFIC_CAPTURE_DURATION_S)
 
 for idx1, src in enumerate(query_servers):
