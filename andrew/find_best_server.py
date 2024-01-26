@@ -1,6 +1,7 @@
 """
-Given a list of server IPs, selects the best server to send data to for processing.
-Does this using pathneck measurements and requesting each server for a processing power.
+Given a list of server IPs, print the server with the minimum est. processing time
+Also stores a dict of server -> (bottleneck_bw, processing_power, process_power_unit)
+Does this using pathneck BW measurements, and requesting each server for a processing power.
 """
 
 import argparse
@@ -14,7 +15,7 @@ from collections import defaultdict
 
 from utils.experiment_helpers import pathneck, parse_pathneck_result, ping, iperf_server, iperf_client_bw, iperf_client
 from andrew.server import PORT as SERVER_PORT
-from andrew.client_requests import make_power_request, make_process_data_request
+from andrew.client_scripts import make_request_power_script, make_send_data_script
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--client', type=str, required=True,
@@ -38,7 +39,7 @@ use_iperf = args.iperf
 SOCK_TIMEOUT_S = 10
 MbPS_TO_MBPS = 1/8
 
-# start background traffic from contesting clients
+# start background traffic from contesting clients USING IPERF
 # for server, _ in servers:
 #     iperf_server(server)
 #
@@ -53,15 +54,14 @@ MbPS_TO_MBPS = 1/8
 for server, _ in servers:
     subprocess.Popen(['docker', 'exec', server, 'python3', 'server.py'])
 
+# start background traffic USING PROTOCOL FROM server.py (echos data via TCP stream)
 contesting_clients = [
     ('c3', '10.0.4.5'),  # ip is for target SERVER
 ]
 
 for c, server_ip in contesting_clients:
-    process_data_request_code = make_process_data_request(SOCK_TIMEOUT_S, server_ip, SERVER_PORT, 0.2)
-    subprocess.Popen(['docker', 'exec', c, 'python3', '-c', process_data_request_code])
-time.sleep(30)
-exit(0)
+    send_data_script = make_send_data_script(SOCK_TIMEOUT_S, server_ip, SERVER_PORT, 0.2)
+    subprocess.Popen(['docker', 'exec', c, 'python3', '-c', send_data_script])
 
 # find best server
 best_server_ip, min_process_t = None, float('inf')
@@ -69,8 +69,8 @@ for server, ip in servers:
     # try to reach server and request processing power, via TCP
     power = None  # note: megaByte/s, not megabits
     try:
-        power_request_code = make_power_request(SOCK_TIMEOUT_S, ip, SERVER_PORT)
-        result = subprocess.run(['docker', 'exec', client, 'python3', '-c', power_request_code], stdout=subprocess.PIPE)
+        request_power_script = make_request_power_script(SOCK_TIMEOUT_S, ip, SERVER_PORT)
+        result = subprocess.run(['docker', 'exec', client, 'python3', '-c', request_power_script], stdout=subprocess.PIPE)
         power = float(result.stdout.decode('utf-8'))
     except:
         traceback.print_exc()
@@ -101,12 +101,12 @@ for server, ip in servers:
                     min_bw_link, min_bw = (prev_hop, curr_hop), bw
                 prev_hop = curr_hop
 
-        # default to minimum bw measurement if no bottleneck found  #TODO: verify this is an appropriate estimate
+        # default to minimum bw measurement if no bottleneck found  #TODO: verify this is an ok substitution
         if bottleneck_link is None and min_bw_link is not None:
             bottleneck_link, bottleneck_bw = min_bw_link, min_bw
 
     # estimate processing time
-    process_t = data_size_mb * (1. / (power*1000) + 2. / (bottleneck_bw * MbPS_TO_MBPS))
+    process_t = data_size_mb * (1. / (power*1000) + 2. / (bottleneck_bw * MbPS_TO_MBPS)) #TODO: make helper fx
     if process_t < min_process_t:
         best_server_ip = ip
         min_process_t = process_t

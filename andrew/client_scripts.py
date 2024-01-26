@@ -1,6 +1,8 @@
+"""
+Avoid the problem of having to copy python files to every client on setup, unlike server.py
+"""
 
-
-def make_power_request(sock_timeout_s, server_ip, server_port):
+def make_request_power_script(sock_timeout_s, server_ip, server_port):
     return f"""import socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     sock.settimeout({sock_timeout_s})
@@ -9,7 +11,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     power = float(sock.recv(1024).decode('utf-8'))
     print('POWER:', power)"""
 
-def make_process_data_request(sock_timeout_s, server_ip, server_port, data_size_mb):
+def make_send_data_script(sock_timeout_s, server_ip, server_port, data_size_mb):
     return f"""import socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     sock.settimeout({sock_timeout_s})

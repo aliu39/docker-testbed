@@ -1,6 +1,6 @@
 """
 Uses pathneck measurements to assign clients to servers
-(Use topologies/load_balance.py)
+(Tested with topologies/load_balance.py)
 """
 import os
 import sys
@@ -30,7 +30,7 @@ servers = [
 #     {'name': 's3', 'ip': '10.0.4.3'},
 # ]
 
-assignments = defaultdict(list)  # server -> client
+assignments = defaultdict(list)  # server name -> client name
 # assigns clients sequentially (not necessarily fair)
 for client in clients:
     best_server, best_bw = None, float('-inf')
@@ -42,7 +42,7 @@ for client in clients:
             continue  # assume no bottleneck means server is unreachable
 
         if server['name'] in assignments:
-            bw_est = bottleneck_bw / len(assignments[server['name']])  # assume worst case: bottleneck is shared
+            bw_est = bottleneck_bw / len(assignments[server['name']])  # assume worst case: bottleneck is shared. Assume equal allocation
         else:
             bw_est = bottleneck_bw
 

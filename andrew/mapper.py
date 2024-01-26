@@ -1,5 +1,5 @@
 """
-Maps the network from a central server node
+Maps the network from a central server node, given the name of a topology_config file (see topologies/ and ip_lists/)
 - constructs topology graph using nmap (ping sweep) and traceroute
 - stores min rtt to all nodes and bottleneck BW to client ("data") nodes
 - TODO: periodic rebuilds?
@@ -19,7 +19,7 @@ args = parser.parse_args()
 TRAFFIC_CAPTURE_DURATION_S = 5
 
 query_servers = []
-with open(f'andrew/ip_lists/{args.topology}', 'r') as query_file:
+with open(f'andrew/ip_lists/{args.topology}', 'r') as query_file: #TODO: parse ips directly from topology file
     for line in query_file.read().splitlines():
         line = line.split('#', 1)[0]
         if line and not line.isspace():
@@ -68,12 +68,14 @@ for ip1 in topology['links']:
 
 # TODO: RESOLVE IP ALIASING
 '''
-Mercator is easiest to implement and doesn't require candidate pairs
+Some notes: (also see Rocket Fuel: mapping public ISPs paper)
+Mercator is easiest to implement and doesn't require candidate pairs to test
 Rocket Fuel may be more accurate
 
 Mercator:
 Use IP packet's source address, in traceroute responses
 ('normal' UDP-based traceroutes are used, rather than some specialized packet)
+-> what are the cons of this?
 
 Rocket Fuel:
 1. Identify potential alias pairs
